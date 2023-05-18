@@ -1,4 +1,3 @@
-import { useNavigate } from "react-router-dom";
 import {
   SimpleGrid,
   HStack,
@@ -10,11 +9,9 @@ import {
 import ItsMe from "../assets/me.jpeg";
 
 function Me() {
-  const navigate = useNavigate();
-  const handleClick = () => {
-    navigate("/about");
-  };
-  function Feature({ title, desc, ...rest }) {
+  function Feature({ ...rest }) {
+    const { title, desc } = rest;
+
     return (
       <Box
         p={3}

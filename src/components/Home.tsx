@@ -1,22 +1,18 @@
 import { useState, useEffect, useRef } from "react";
-import Typed from "typed.js";
+import { Typed } from "typed.ts";
 import { useNavigate } from "react-router-dom";
 import {
   Button,
   useDisclosure,
   Modal,
-  ModalOverlay,
   ModalContent,
-  ModalHeader,
-  ModalFooter,
   ModalBody,
-  ModalCloseButton,
 } from "@chakra-ui/react";
 import DuarrGif from "../assets/duarr.gif";
 
 function App() {
   const [codeStatus, setCodeStatus] = useState<boolean>();
-  const el = useRef(null);
+  const el = useRef<HTMLDivElement>(null);
   const navigate = useNavigate();
   const { isOpen, onOpen, onClose } = useDisclosure();
 
@@ -28,31 +24,85 @@ function App() {
       navigate("/me");
     }, 1500);
   };
-  useEffect(() => {
-    const a = [true, false];
-    const randomValue = false;
-    // const randomValue = a[Math.floor(a.length * Math.random())];
 
-    const typed = new Typed(el.current, {
-      strings: randomValue
-        ? [
-            'npm install MSA^3000\n `Installing components...` ^3000\n `Fetching from source...`^3000\n `<span style="color: green">Success 200</span>`^3000 `🤪`\n `====================`\n `MSA Begin`\n `====================`\n',
-          ]
-        : [
-            'npm install MSA^3000\n `Installing components...` ^3000\n `Fetching from source...`^3000\n `<span style="color: red">Failed 403</span>`^3000 `😭`\n `====================`\n `Oh no, please try again...`\n `====================`\n',
-          ],
-      typeSpeed: 80,
-      smartBackspace: true,
-      onComplete: function () {
-        setCodeStatus(randomValue);
+  useEffect(() => {
+    const typed = new Typed({
+      callback: (text) => {
+        if (el.current) {
+          el.current.innerHTML = text;
+        }
       },
     });
+    const type = async () => {
+      const line1 = "npm install MSA\n";
+      const line2 = "Installing components...\n";
+      const line3 = "Fetching from source...\n";
+      const line4 = "Success 200 🤪\n";
+      const line5 = `Failed 403 😭\n`;
+
+      const a = [true, false];
+      const randomValue = a[Math.floor(a.length * Math.random())];
+      console.log(randomValue);
+      typed.type(line1, { errorMultiplier: 0 });
+      typed.wait(3000);
+      typed.type(line2, { errorMultiplier: 0 });
+      typed.wait(3000);
+      typed.type(line3, { errorMultiplier: 0 });
+      typed.wait(3000);
+      if (randomValue) {
+        typed.type(line4, { errorMultiplier: 0, className: "successTyped" });
+        typed.wait(3000);
+        typed.type("====================\n", { errorMultiplier: 0 });
+        typed.wait(1000);
+        typed.type("MSA Begin\n", {
+          errorMultiplier: 0,
+          className: "fontWeight",
+        });
+        typed.wait(1000);
+        typed.type("====================\n", { errorMultiplier: 0 });
+        typed.wait(1000);
+        // setTimeout(() => {
+        //   setCodeStatus(randomValue);
+        // }, 28000);
+      } else {
+        typed.type(line5, {
+          errorMultiplier: 0,
+          noSpecialCharErrors: true,
+          className: "errorTyped",
+        });
+        typed.wait(3000);
+        typed.type("====================\n", { errorMultiplier: 0 });
+        typed.wait(1000);
+        typed.type("Oh no, please try again...\n", {
+          errorMultiplier: 0,
+          className: "fontWeight",
+        });
+        typed.wait(1000);
+        typed.type("====================\n", { errorMultiplier: 0 });
+        typed.wait(1000);
+      }
+      await typed.run();
+      setCodeStatus(randomValue);
+
+      // typed.reset();
+    };
+    type();
+    // const typed = new Typed(el.current, {
+    //   strings: randomValue
+    //     ? [
+    //         'npm install MSA^3000\n `Installing components...` ^3000\n `Fetching from source...`^3000\n `<span style="color: green">Success 200</span>`^3000 `🤪`\n `====================`\n `MSA Begin`\n `====================`\n',
+    //       ]
+    //     : [
+    //         'npm install MSA^3000\n `Installing components...` ^3000\n `Fetching from source...`^3000\n `<span style="color: red">Failed 403</span>`^3000 `😭`\n `====================`\n `Oh no, please try again...`\n `====================`\n',
+    //       ],
+    //   typeSpeed: 80,
+    //   smartBackspace: true,
+    //   onComplete: function () {
+    //     setCodeStatus(randomValue);
+    //   },
+    // });
 
     sessionStorage.removeItem("poor");
-    return () => {
-      // Destroy Typed instance during cleanup to stop animation
-      typed.destroy();
-    };
   }, []);
 
   const handleRetry = () => {
@@ -134,7 +184,13 @@ function App() {
                 </q>
               </p>
             </div>
-            <div>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                marginTop: 20,
+              }}
+            >
               <Button onClick={handleRetry} colorScheme="red">
                 Retry
               </Button>

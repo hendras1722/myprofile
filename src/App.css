@@ -7,3 +7,15 @@
   justify-content: center;
   align-items: center;
 }
+.errorTyped {
+  color: red;
+  font-weight: bold;
+}
+.successTyped {
+  color: green;
+  font-weight: bold;
+}
+
+.fontWeight {
+  font-weight: bold;
+}
