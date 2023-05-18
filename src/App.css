@@ -1,0 +1,9 @@
+.modalContent {
+  opacity: 1 !important;
+  background-color: transparent;
+}
+.modalBodyCustom {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
