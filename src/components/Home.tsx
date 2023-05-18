@@ -134,9 +134,11 @@ function App() {
                 </q>
               </p>
             </div>
-            {/* <div>
-              <button onClick={handleRetry}>Retry</button>
-            </div> */}
+            <div>
+              <Button onClick={handleRetry} colorScheme="red">
+                Retry
+              </Button>
+            </div>
           </>
         )}
       </div>
