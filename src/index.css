@@ -1,3 +1,7 @@
 .modalCustom {
   opacity: 0.5;
 }
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

@@ -4,6 +4,7 @@ import { Routes, Route, useNavigate } from "react-router-dom";
 import { ChakraProvider } from "@chakra-ui/react";
 import Me from "./components/Me";
 import About from "./components/about";
+import "./App.css";
 
 function App() {
   const [sessionState, setSessionState] = useState("");
@@ -17,11 +18,13 @@ function App() {
   }, [navigate, sessionState]);
   return (
     <ChakraProvider>
-      <Routes>
-        <Route path="/" element={<Home />}></Route>
-        <Route path="/me" element={<Me />}></Route>
-        <Route path="/about" element={<About />}></Route>
-      </Routes>
+      <>
+        <Routes>
+          <Route path="/" element={<Home />}></Route>
+          <Route path="/me" element={<Me />}></Route>
+          <Route path="/about" element={<About />}></Route>
+        </Routes>
+      </>
     </ChakraProvider>
   );
 }

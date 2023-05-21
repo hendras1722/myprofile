@@ -61,9 +61,6 @@ function App() {
         typed.wait(1000);
         typed.type("====================\n", { errorMultiplier: 0 });
         typed.wait(1000);
-        // setTimeout(() => {
-        //   setCodeStatus(randomValue);
-        // }, 28000);
       } else {
         typed.type(line5, {
           errorMultiplier: 0,
@@ -87,20 +84,6 @@ function App() {
       // typed.reset();
     };
     type();
-    // const typed = new Typed(el.current, {
-    //   strings: randomValue
-    //     ? [
-    //         'npm install MSA^3000\n `Installing components...` ^3000\n `Fetching from source...`^3000\n `<span style="color: green">Success 200</span>`^3000 `🤪`\n `====================`\n `MSA Begin`\n `====================`\n',
-    //       ]
-    //     : [
-    //         'npm install MSA^3000\n `Installing components...` ^3000\n `Fetching from source...`^3000\n `<span style="color: red">Failed 403</span>`^3000 `😭`\n `====================`\n `Oh no, please try again...`\n `====================`\n',
-    //       ],
-    //   typeSpeed: 80,
-    //   smartBackspace: true,
-    //   onComplete: function () {
-    //     setCodeStatus(randomValue);
-    //   },
-    // });
 
     sessionStorage.removeItem("poor");
   }, []);
@@ -142,9 +125,8 @@ function App() {
             overflow: "auto",
           }}
         >
-          $ <span ref={el} />
+          $ <span ref={el} /> <span>|</span>
         </div>
-
         <Modal onClose={onClose} size={"full"} isOpen={isOpen}>
           <ModalContent className="modalContent">
             <ModalBody className="modalBodyCustom">
