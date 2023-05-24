@@ -50,42 +50,50 @@ function Me() {
                 </div>
                 <Divider marginTop={10} />
                 <div style={{ marginTop: 10 }}>
-                  <div>
+                  <div className="mt-3 text-lg font-medium">
                     Alamat:{" "}
-                    <span>
+                    <span className="text-sm font-medium">
                       Jl Beo 1 Perum Barito 1 blok A5 Rt 2/X Gonilan Kartasura
                     </span>
                     <span>
                       <div>
-                        <iframe
+                        {/* <iframe
                           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3955.1838434139495!2d110.76120467538342!3d-7.554923192458826!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a145ec5110753%3A0x67321908c1550d55!2sPerum%20Barito%201!5e0!3m2!1sid!2sid!4v1684643947441!5m2!1sid!2sid"
                           height="450"
                           loading="lazy"
-                        ></iframe>
+                        ></iframe> */}
                       </div>
                     </span>
                   </div>
-                  <div className="mt-5">
-                    <h1>Contact</h1>
+                  <div className="mt-3 text-lg font-medium">
+                    Email:{" "}
+                    <span className="text-sm font-medium">
+                      <a href="mailto:muhsyahendraa1722@gmail.com">
+                        muhsyahendraa1722@gmail.com
+                      </a>
+                    </span>
+                  </div>
+                  <div className="mt-3">
+                    <div className="text-lg font-medium">Contact</div>
                     <span className="mt-3">
                       <div className="flex justify-around mt-5 ">
                         <div>
                           <div>
-                            <button class="bg-transparent hover:bg-black text-black font-semibold hover:text-white py-2 px-4 border border-black hover:border-transparent rounded">
+                            <button className="bg-transparent hover:bg-black text-black font-semibold hover:text-white py-2 px-4 border border-black hover:border-transparent rounded">
                               Github
                             </button>
                           </div>
                         </div>
                         <div>
                           <div>
-                            <button class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
+                            <button className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
                               Linkedin
                             </button>
                           </div>
                         </div>
                         <div>
                           <div>
-                            <button class="bg-transparent hover:bg-green-500 text-green-500 font-semibold hover:text-white py-2 px-4 border border-green-500 hover:border-transparent rounded">
+                            <button className="bg-transparent hover:bg-green-500 text-green-500 font-semibold hover:text-white py-2 px-4 border border-green-500 hover:border-transparent rounded">
                               Whatsapp
                             </button>
                           </div>
@@ -98,6 +106,11 @@ function Me() {
             </div>
           </HStack>
           <hr />
+          <div className="mt-5 p-5 border-2 rounded-md">
+            <div>Title</div>
+            <div>Description</div>
+            <div>Language</div>
+          </div>
         </div>
       </div>
     </>
