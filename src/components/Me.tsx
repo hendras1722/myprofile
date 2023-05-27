@@ -4,7 +4,7 @@ import type { Github } from "../modules/github";
 import { useState } from "react";
 
 function Me() {
-  const [stateGithub, setStateGithub] = useState<Github>([]);
+  const [stateGithub, setStateGithub] = useState<Github[]>([]);
   // const [stateLinkedin, setStateLinkedin] = useState<string>("");
   const [stateWhatsapp, setStateWhatsapp] = useState<string>("");
   const [open, setOpen] = useState<boolean>(false);
@@ -25,7 +25,7 @@ function Me() {
     });
   }
 
-  const handleClick = async (e): Promise<void> => {
+  const handleClick = async (e: string): Promise<void> => {
     switch (e) {
       case "github":
         setOpen(false);
@@ -41,7 +41,7 @@ function Me() {
             });
           }, 300);
           setStateGithub(data);
-        } catch (error) {
+        } catch (error: Error) {
           console.error(error.message);
         }
         break;
@@ -227,7 +227,7 @@ function Me() {
                       className="shadow h-24 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                       type="text"
                       placeholder="Username"
-                      onChange={(e) => setStateWhatsapp(e.target.value)}
+                      onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => setStateWhatsapp(e.target.value)}
                     />
                   </div>
 
