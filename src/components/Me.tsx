@@ -70,7 +70,7 @@ function Me() {
     console.log(detectMob(), "inim");
     if (detectMob()) {
       return window.open(
-        `whatsapp://send?phone=089663604258&text=${encodeURIComponent(
+        `whatsapp://send?phone=6289663604258&text=${encodeURIComponent(
           stateWhatsapp
         )}`,
         "_blank"
