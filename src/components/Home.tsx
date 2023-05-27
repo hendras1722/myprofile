@@ -177,15 +177,20 @@ function App() {
                 Retry
               </Button>
             </div>
+            <div className="text-center">
+              Sudah menyerah ?{" "}
+              <a
+                href="javascript:void(0)"
+                onClick={handleNext}
+                className="text-blue-700"
+                font-bold
+              >
+                {" "}
+                klik disini
+              </a>
+            </div>
           </>
         )}
-        <div className="text-center">
-          Sudah menyerah ?{" "}
-          <a href="javascript:void(0)" onClick={handleNext}>
-            {" "}
-            klik disini
-          </a>
-        </div>
       </div>
     </>
   );
