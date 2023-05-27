@@ -1,6 +1,6 @@
 import { HStack, Box, Heading, Text, Divider } from "@chakra-ui/react";
 import ItsMe from "../assets/me.jpeg";
-import type { Github } from "../modules/github";
+import { Github } from "../modules/github";
 import { useState } from "react";
 
 function Me() {
@@ -227,7 +227,7 @@ function Me() {
                       className="shadow h-24 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                       type="text"
                       placeholder="Username"
-                      onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => setStateWhatsapp(e.target.value)}
+                      onChange={(e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => setStateWhatsapp(e.target.value)}
                     />
                   </div>
 
