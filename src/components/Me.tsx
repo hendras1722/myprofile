@@ -1,6 +1,6 @@
 import { HStack, Box, Heading, Text, Divider } from "@chakra-ui/react";
 import ItsMe from "../assets/me.jpeg";
-import { Github } from "../modules/github";
+import { Github } from "../modules/github.ts";
 import { useState } from "react";
 
 function Me() {
