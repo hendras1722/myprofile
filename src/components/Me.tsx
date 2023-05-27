@@ -70,7 +70,9 @@ function Me() {
     console.log(detectMob(), "inim");
     if (detectMob()) {
       return window.open(
-        `whatsapp://send?text=${encodeURIComponent(stateWhatsapp)}`,
+        `whatsapp://send?phone=089663604258&text=${encodeURIComponent(
+          stateWhatsapp
+        )}`,
         "_blank"
       );
     }
@@ -132,21 +134,12 @@ function Me() {
                     desc="Hi, I'm Muh Syahendra Anindyantoro usually called hendra. I work as a Frontend Developer or Frontend Engineer. My daily life as a Frontend Developer is always in front of a laptop. Covering the design into HTML and integrating the required endpoints."
                   />
                 </div>
-                <div className="mt-5 px-4">
+                <div className="mt-5 px-4  hidden lg:block">
                   <Divider marginTop={5} />
                   <div className="mt-3 text-lg font-medium">
                     Address:{" "}
                     <span className="text-sm font-medium">
                       Jl Beo 1 Perum Barito 1 blok A5 Rt 2/X Gonilan Kartasura
-                    </span>
-                    <span>
-                      <div>
-                        {/* <iframe
-                          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3955.1838434139495!2d110.76120467538342!3d-7.554923192458826!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a145ec5110753%3A0x67321908c1550d55!2sPerum%20Barito%201!5e0!3m2!1sid!2sid!4v1684643947441!5m2!1sid!2sid"
-                          height="450"
-                          loading="lazy"
-                        ></iframe> */}
-                      </div>
                     </span>
                   </div>
                   <div className="mt-3 text-lg font-medium">
@@ -173,6 +166,35 @@ function Me() {
               </Box>
             </div>
           </HStack>
+          <div className="mt-5 px-4 block md:block lg:hidden ">
+            <Divider marginTop={5} />
+            <div className="mt-3 text-lg font-medium">
+              Address:{" "}
+              <span className="text-sm font-medium">
+                Jl Beo 1 Perum Barito 1 blok A5 Rt 2/X Gonilan Kartasura
+              </span>
+            </div>
+            <div className="mt-3 text-lg font-medium">
+              Email:{" "}
+              <span className="text-sm font-medium">
+                <a href="mailto:muhsyahendraa1722@gmail.com">
+                  muhsyahendraa1722@gmail.com
+                </a>
+              </span>
+            </div>
+            <div className="mt-3 text-lg font-medium">
+              Skill:{" "}
+              <span className="text-sm font-medium">
+                ReactJS | NextJS | Nuxt | Vue
+              </span>
+            </div>
+            <div className="mt-3 text-lg font-medium mb-5 ">
+              CV:{" "}
+              <span className="text-sm font-medium">
+                <a href="">Download</a>
+              </span>
+            </div>
+          </div>
           <div className="px-4">
             <hr />
             <div className="mt-3">
