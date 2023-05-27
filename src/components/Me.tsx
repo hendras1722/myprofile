@@ -9,6 +9,48 @@ function Me() {
   const [stateWhatsapp, setStateWhatsapp] = useState<string>("");
   const [open, setOpen] = useState<boolean>(false);
 
+  const workExperience = [
+    {
+      position: "Frontend Engineer",
+      placeAndDate: "PrivyID · Purnawaktu",
+      date: "Jul 2021 - Saat ini · 1 thn 11 bln",
+      place: "Daerah Istimewa Yogyakarta, Indonesia",
+    },
+    {
+      position: "Frontend Developer",
+      placeAndDate: "PT. NashTa Global Utama · Kontrak",
+      date: "Jul 2020 - Jun 2021 · 1 thnJul",
+      place: "Depok, Jawa Barat, Indonesia",
+    },
+    {
+      position: "Trainner Arduino",
+      placeAndDate: "BLPT Yogyakarta",
+      date: "Apr 2019 · 1 bln",
+      place: "Daerah Istimewa Yogyakarta, Indonesia",
+    },
+    {
+      position: "Technical Support Engineer",
+      placeAndDate: "PT. Binter Jet Indonesia",
+      date: "Feb 2019 - Mar 2019 · 2 bln",
+      place: "Provinsi Jawa Tengah, Indonesia",
+    },
+  ];
+
+  const project = [
+    {
+      name: "CIMB CCPL",
+      date: "Jul 2021 - Sekarang",
+    },
+    {
+      name: "CEISA 4.0",
+      date: "Jul 2020 - Jun 2021",
+    },
+    {
+      name: "Alat Monitoring Suhu di Panel Gardu Induk",
+      date: "Jun 2019 - Jun 2019",
+    },
+  ];
+
   function detectMob() {
     const toMatch = [
       /Android/i,
@@ -55,10 +97,14 @@ function Me() {
       case "whatsapp":
         window.scroll({
           behavior: "smooth",
-          top: 30,
+          top: 500,
         });
         setStateGithub([]);
         setOpen(true);
+        break;
+      case "clear":
+        setStateGithub([]);
+        setOpen(false);
         break;
 
       default:
@@ -67,7 +113,6 @@ function Me() {
   };
 
   const handleWhatsapp = () => {
-    console.log(detectMob(), "inim");
     if (detectMob()) {
       return window.open(
         `whatsapp://send?phone=6289663604258&text=${encodeURIComponent(
@@ -91,6 +136,7 @@ function Me() {
         shadow={rest["children"] ? "none" : "md"}
         borderWidth={rest["children"] ? "none" : "1px"}
         {...rest}
+        background={rest["children"] ? "" : "white"}
       >
         <Heading fontSize="4xl">{title}</Heading>
         <Text marginTop={"20px"} textAlign={"justify"}>
@@ -136,173 +182,284 @@ function Me() {
                 </div>
                 <div className="mt-5 px-4  hidden lg:block">
                   <Divider marginTop={5} />
-                  <div className="mt-3 text-lg font-medium">
-                    Address:{" "}
-                    <span className="text-sm font-medium">
-                      Jl Beo 1 Perum Barito 1 blok A5 Rt 2/X Gonilan Kartasura
-                    </span>
+                  <div className="mt-5 font-bold text-lg mb-5">
+                    Contact Person
                   </div>
-                  <div className="mt-3 text-lg font-medium">
-                    Email:{" "}
-                    <span className="text-sm font-medium">
-                      <a href="mailto:muhsyahendraa1722@gmail.com">
-                        muhsyahendraa1722@gmail.com
-                      </a>
-                    </span>
-                  </div>
-                  <div className="mt-3 text-lg font-medium">
-                    Skill:{" "}
-                    <span className="text-sm font-medium">
-                      ReactJS | NextJS | Nuxt | Vue
-                    </span>
-                  </div>
-                  <div className="mt-3 text-lg font-medium">
-                    CV:{" "}
-                    <span className="text-sm font-medium">
-                      <a href="">Download</a>
-                    </span>
-                  </div>
+                  <Box
+                    padding={3}
+                    shadow={"md"}
+                    borderWidth={"1px"}
+                    borderRadius={10}
+                    marginTop={3}
+                    background={"white"}
+                  >
+                    <div className="mt-3 text-lg font-medium">
+                      Address:{" "}
+                      <span className="text-sm font-medium">
+                        Jl Beo 1 Perum Barito 1 blok A5 Rt 2/X Gonilan Kartasura
+                      </span>
+                    </div>
+                    <div className="mt-3 text-lg font-medium">
+                      Email:{" "}
+                      <span className="text-sm font-medium">
+                        <a href="mailto:muhsyahendraa1722@gmail.com">
+                          muhsyahendraa1722@gmail.com
+                        </a>
+                      </span>
+                    </div>
+                    <div className="mt-3 text-lg font-medium">
+                      Skill:{" "}
+                      <span className="text-sm font-medium">
+                        ReactJS | NextJS | Nuxt | Vue | Javascript | React
+                        Native
+                      </span>
+                    </div>
+                    <div className="mt-3 text-lg font-medium">
+                      CV:{" "}
+                      <span className="text-sm font-medium">
+                        <a href="">Download</a>
+                      </span>
+                    </div>
+                  </Box>
+                </div>
+                <div className="mt-3">
+                  <span className="mt-3">
+                    <div className="flex lg:justify-start justify-center md:justify-center mt-5 ">
+                      <div className="md:mr-5 mr-3">
+                        <div>
+                          <button
+                            onClick={() => handleClick("github")}
+                            className="bg-transparent hover:bg-black text-black font-semibold hover:text-white py-2 px-4 border border-black hover:border-transparent rounded"
+                          >
+                            Github
+                          </button>
+                        </div>
+                      </div>
+                      <div className="md:mr-5 mr-3">
+                        <div>
+                          <button
+                            onClick={() => handleClick("linkedin")}
+                            className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
+                          >
+                            Linkedin
+                          </button>
+                        </div>
+                      </div>
+                      <div className="md:mr-5">
+                        <div>
+                          <button
+                            onClick={() => handleClick("whatsapp")}
+                            className="bg-transparent hover:bg-green-500 text-green-500 font-semibold hover:text-white py-2 px-4 border border-green-500 hover:border-transparent rounded"
+                          >
+                            Whatsapp
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </span>
                 </div>
               </Box>
             </div>
           </HStack>
-          <div className="mt-5 px-4 block md:block lg:hidden ">
-            <Divider marginTop={5} />
-            <div className="mt-3 text-lg font-medium">
-              Address:{" "}
-              <span className="text-sm font-medium">
-                Jl Beo 1 Perum Barito 1 blok A5 Rt 2/X Gonilan Kartasura
-              </span>
-            </div>
-            <div className="mt-3 text-lg font-medium">
-              Email:{" "}
-              <span className="text-sm font-medium">
-                <a href="mailto:muhsyahendraa1722@gmail.com">
-                  muhsyahendraa1722@gmail.com
-                </a>
-              </span>
-            </div>
-            <div className="mt-3 text-lg font-medium">
-              Skill:{" "}
-              <span className="text-sm font-medium">
-                ReactJS | NextJS | Nuxt | Vue
-              </span>
-            </div>
-            <div className="mt-3 text-lg font-medium mb-5 ">
-              CV:{" "}
-              <span className="text-sm font-medium">
-                <a href="">Download</a>
-              </span>
-            </div>
-          </div>
           <div className="px-4">
-            <hr />
-            <div className="mt-3">
-              <span className="mt-3">
-                <div className="flex justify-around md:justify-center mt-5 ">
-                  <div className="md:mr-5 mr-3">
-                    <div>
-                      <button
-                        onClick={() => handleClick("github")}
-                        className="bg-transparent hover:bg-black text-black font-semibold hover:text-white py-2 px-4 border border-black hover:border-transparent rounded"
-                      >
-                        Github
-                      </button>
-                    </div>
-                  </div>
-                  <div className="md:mr-5 mr-3">
-                    <div>
-                      <button
-                        onClick={() => handleClick("linkedin")}
-                        className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
-                      >
-                        Linkedin
-                      </button>
-                    </div>
-                  </div>
-                  <div className="md:mr-5">
-                    <div>
-                      <button
-                        onClick={() => handleClick("whatsapp")}
-                        className="bg-transparent hover:bg-green-500 text-green-500 font-semibold hover:text-white py-2 px-4 border border-green-500 hover:border-transparent rounded"
-                      >
-                        Whatsapp
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </span>
+            <div className="md:mr-5 flex items-center justify-center mb-3  ">
+              <div className="w-full">
+                {(stateGithub.length > 0 || open) && (
+                  <button
+                    onClick={() => handleClick("clear")}
+                    className="bg-transparent hover:bg-red-500 text-red-500 font-semibold hover:text-white py-2 px-4 border border-red-500 hover:border-transparent rounded w-full"
+                  >
+                    Close
+                  </button>
+                )}
+              </div>
             </div>
-            {/* <iframe src="https://www.w3schools.com" title="linkedin"></iframe> */}
-            {open && (
-              <div className="mt-8">
-                <div
-                  className="flex justify-center font-bold text-2xl"
-                  style={{ color: "#23D366" }}
-                >
-                  Whatsapp
-                </div>
-                <form className="bg-white px-8 pt-6 pb-8 mb-4">
-                  <div className="mb-4">
-                    <label
-                      className="block text-gray-700 text-sm font-bold mb-2"
-                      htmlFor="username"
-                    >
-                      Pesan:
-                    </label>
-                    <textarea
-                      className="shadow h-24 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                      typeof="text"
-                      placeholder="Username"
-                      onChange={handleChangeTextArea}
-                    />
-                  </div>
 
-                  <div className="flex items-center justify-center">
-                    <button
-                      className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                      typeof="button"
-                      onClick={handleWhatsapp}
-                      style={{ background: "#23D366" }}
-                    >
-                      Open Whatsapp
-                    </button>
-                  </div>
-                </form>
+            {(stateGithub.length > 0 || open) && <hr />}
+            {stateGithub.length > 0 && (
+              <div className="mt-3">
+                <a href="https://github.com/hendras1722">
+                  <small>Visit my profile</small>
+                </a>
               </div>
             )}
+            {open && (
+              <div className="mt-8">
+                <Box
+                  padding={3}
+                  shadow={"md"}
+                  borderWidth={"1px"}
+                  borderRadius={10}
+                  marginTop={3}
+                  background={"white"}
+                >
+                  <div
+                    className="flex justify-center font-bold text-2xl mt-3"
+                    style={{ color: "#23D366" }}
+                  >
+                    Whatsapp
+                  </div>
+                  <form className="bg-white px-8 pt-6 pb-8 mb-4">
+                    <div className="mb-4">
+                      <label
+                        className="block text-gray-700 text-sm font-bold mb-2"
+                        htmlFor="username"
+                      >
+                        Pesan:
+                      </label>
+                      <textarea
+                        className="shadow h-24 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        typeof="text"
+                        placeholder="Username"
+                        onChange={handleChangeTextArea}
+                      />
+                    </div>
+
+                    <div className="flex items-center justify-center">
+                      <button
+                        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                        typeof="button"
+                        onClick={handleWhatsapp}
+                        style={{ background: "#23D366" }}
+                      >
+                        Open Whatsapp
+                      </button>
+                    </div>
+                  </form>
+                </Box>
+              </div>
+            )}
+
             {stateGithub.length > 0 &&
               stateGithub.map((item, index) => (
-                <a href={item.svn_url} key={index}>
-                  <div className="mt-5 p-5 border-2 rounded-md">
-                    <div className="mt-3">
-                      <span className="font-semibold">Name :</span> {item.name}
-                    </div>
-                    <div className="mt-3">
-                      <span className="font-semibold">Description :</span>{" "}
-                      {item.description}
-                    </div>
-                    <div
-                      className={`${
-                        item.language &&
-                        item.language.toLowerCase().includes("javascript")
-                          ? "bg-yellow-200  w-fit py-1 px-2 rounded-full text-sm mt-3"
-                          : item.language &&
-                            item.language.toLowerCase().includes("vue")
-                          ? "bg-green-200 w-fit py-1 px-2 rounded-full text-sm mt-3"
-                          : item.language &&
-                            item.language.toLowerCase().includes("typescript")
-                          ? "bg-blue-200 w-fit py-1 px-2 rounded-full text-sm mt-3"
-                          : !item.language
-                          ? ""
-                          : "bg-gray-200 w-fit py-1 px-2 rounded-full text-sm mt-3"
-                      }`}
-                    >
-                      {item.language}
-                    </div>
-                  </div>
-                </a>
+                <>
+                  <Box
+                    padding={3}
+                    shadow={"md"}
+                    borderWidth={"1px"}
+                    borderRadius={10}
+                    marginTop={3}
+                    background={"white"}
+                  >
+                    <a href={item.svn_url} key={index}>
+                      <div>
+                        <div className="mt-3">
+                          <span className="font-semibold">Name :</span>{" "}
+                          {item.name}
+                        </div>
+                        <div className="mt-3">
+                          <span className="font-semibold">Description :</span>{" "}
+                          {item.description}
+                        </div>
+                        <div
+                          className={`${
+                            item.language &&
+                            item.language.toLowerCase().includes("javascript")
+                              ? "bg-yellow-200  w-fit py-1 px-2 rounded-full text-sm mt-3"
+                              : item.language &&
+                                item.language.toLowerCase().includes("vue")
+                              ? "bg-green-200 w-fit py-1 px-2 rounded-full text-sm mt-3"
+                              : item.language &&
+                                item.language
+                                  .toLowerCase()
+                                  .includes("typescript")
+                              ? "bg-blue-200 w-fit py-1 px-2 rounded-full text-sm mt-3"
+                              : !item.language
+                              ? ""
+                              : "bg-gray-200 w-fit py-1 px-2 rounded-full text-sm mt-3"
+                          }`}
+                        >
+                          {item.language}
+                        </div>
+                      </div>
+                    </a>
+                  </Box>
+                </>
               ))}
+          </div>
+          <div className="mt-5 px-4 block md:block lg:hidden ">
+            <Divider marginTop={5} />
+            <div className="mt-5 font-bold text-lg mb-5">Contact Person</div>
+            <Box
+              padding={3}
+              shadow={"md"}
+              borderWidth={"1px"}
+              borderRadius={10}
+              marginTop={3}
+              background={"white"}
+            >
+              <div className="mt-3 text-lg font-medium">
+                Address:{" "}
+                <span className="text-sm font-medium">
+                  Jl Beo 1 Perum Barito 1 blok A5 Rt 2/X Gonilan Kartasura
+                </span>
+              </div>
+              <div className="mt-3 text-lg font-medium">
+                Email:{" "}
+                <span className="text-sm font-medium">
+                  <a href="mailto:muhsyahendraa1722@gmail.com">
+                    muhsyahendraa1722@gmail.com
+                  </a>
+                </span>
+              </div>
+              <div className="mt-3 text-lg font-medium">
+                Skill:{" "}
+                <span className="text-sm font-medium">
+                  ReactJS | NextJS | Nuxt | Vue
+                </span>
+              </div>
+              <div className="mt-3 text-lg font-medium mb-5 ">
+                CV:{" "}
+                <span className="text-sm font-medium">
+                  <a href="">Download</a>
+                </span>
+              </div>
+            </Box>
+          </div>
+          <div className="mb-5 px-4">
+            <Divider marginTop={5} />
+            <div className="mt-5 font-bold text-lg mb-5">Experience</div>
+            <div>
+              {workExperience.map((item) => (
+                <Box
+                  padding={3}
+                  shadow={"md"}
+                  borderWidth={"1px"}
+                  borderRadius={10}
+                  marginTop={3}
+                  background={"white"}
+                >
+                  <div className="font-bold">{item.position}</div>
+                  <div>{item.placeAndDate}</div>
+                  <div className="text-neutral-600 font-medium">
+                    <small>{item.date}</small>
+                  </div>
+                  <div className="text-neutral-600 font-medium">
+                    <small>{item.place}</small>
+                  </div>
+                </Box>
+              ))}
+            </div>
+          </div>
+
+          <div className="mb-5 px-4">
+            <Divider marginTop={5} />
+            <div className="mt-5 font-bold text-lg mb-5">Project</div>
+            <div>
+              {project.map((item) => (
+                <Box
+                  padding={3}
+                  shadow={"md"}
+                  borderWidth={"1px"}
+                  borderRadius={10}
+                  marginTop={3}
+                  background={"white"}
+                >
+                  <div className="font-bold">{item.name}</div>
+                  <div>{item.date}</div>
+                </Box>
+              ))}
+            </div>
           </div>
         </div>
       </div>

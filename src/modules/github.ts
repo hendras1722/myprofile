@@ -74,7 +74,6 @@ export interface Github {
   allow_forking?: boolean;
   is_template?: boolean;
   web_commit_signoff_required?: boolean;
-  topics?: any[];
   visibility?: Visibility;
   forks?: number;
   open_issues?: number;

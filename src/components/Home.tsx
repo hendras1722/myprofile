@@ -11,7 +11,7 @@ import {
 import DuarrGif from "../assets/duarr.gif";
 
 function App() {
-  const [codeStatus, setCodeStatus] = useState<boolean>(true);
+  const [codeStatus, setCodeStatus] = useState<boolean>();
   const el = useRef<HTMLDivElement>(null);
   const navigate = useNavigate();
   const { isOpen, onOpen, onClose } = useDisclosure();
