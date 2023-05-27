@@ -33,16 +33,18 @@ function Me() {
           const res = await fetch(
             "https://api.github.com/users/hendras1722/repos"
           );
-          const data = (await res.json()) as Github;
+          const datas = await res.json();
           setTimeout(() => {
             window.scroll({
               behavior: "smooth",
               top: 500,
             });
           }, 300);
-          setStateGithub(data);
-        } catch (error: Error) {
-          console.error(error.message);
+          setStateGithub(datas);
+        } catch (error) {
+          if (error instanceof Error) {
+            console.error(error.message);
+          }
         }
         break;
       case "linkedin":
@@ -100,6 +102,9 @@ function Me() {
       </Box>
     );
   }
+  const handleChangeTextArea = (
+    e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
+  ) => setStateWhatsapp(e.target.value);
 
   return (
     <>
@@ -225,16 +230,16 @@ function Me() {
                     </label>
                     <textarea
                       className="shadow h-24 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                      type="text"
+                      typeof="text"
                       placeholder="Username"
-                      onChange={(e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => setStateWhatsapp(e.target.value)}
+                      onChange={handleChangeTextArea}
                     />
                   </div>
 
                   <div className="flex items-center justify-center">
                     <button
                       className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                      type="button"
+                      typeof="button"
                       onClick={handleWhatsapp}
                       style={{ background: "#23D366" }}
                     >
