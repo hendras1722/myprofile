@@ -340,8 +340,9 @@ function Me() {
                     borderRadius={10}
                     marginTop={3}
                     background={"white"}
+                    key={index}
                   >
-                    <a href={item.svn_url} key={index}>
+                    <a href={item.svn_url}>
                       <div>
                         <div className="mt-3">
                           <span className="font-semibold">Name :</span>{" "}
@@ -420,24 +421,26 @@ function Me() {
             <Divider marginTop={5} />
             <div className="mt-5 font-bold text-lg mb-5">Experience</div>
             <div>
-              {workExperience.map((item) => (
-                <Box
-                  padding={3}
-                  shadow={"md"}
-                  borderWidth={"1px"}
-                  borderRadius={10}
-                  marginTop={3}
-                  background={"white"}
-                >
-                  <div className="font-bold">{item.position}</div>
-                  <div>{item.placeAndDate}</div>
-                  <div className="text-neutral-600 font-medium">
-                    <small>{item.date}</small>
-                  </div>
-                  <div className="text-neutral-600 font-medium">
-                    <small>{item.place}</small>
-                  </div>
-                </Box>
+              {workExperience.map((item, index) => (
+                <div key={index}>
+                  <Box
+                    padding={3}
+                    shadow={"md"}
+                    borderWidth={"1px"}
+                    borderRadius={10}
+                    marginTop={3}
+                    background={"white"}
+                  >
+                    <div className="font-bold">{item.position}</div>
+                    <div>{item.placeAndDate}</div>
+                    <div className="text-neutral-600 font-medium">
+                      <small>{item.date}</small>
+                    </div>
+                    <div className="text-neutral-600 font-medium">
+                      <small>{item.place}</small>
+                    </div>
+                  </Box>
+                </div>
               ))}
             </div>
           </div>
@@ -446,18 +449,20 @@ function Me() {
             <Divider marginTop={5} />
             <div className="mt-5 font-bold text-lg mb-5">Project</div>
             <div>
-              {project.map((item) => (
-                <Box
-                  padding={3}
-                  shadow={"md"}
-                  borderWidth={"1px"}
-                  borderRadius={10}
-                  marginTop={3}
-                  background={"white"}
-                >
-                  <div className="font-bold">{item.name}</div>
-                  <div>{item.date}</div>
-                </Box>
+              {project.map((item, index) => (
+                <div key={index}>
+                  <Box
+                    padding={3}
+                    shadow={"md"}
+                    borderWidth={"1px"}
+                    borderRadius={10}
+                    marginTop={3}
+                    background={"white"}
+                  >
+                    <div className="font-bold">{item.name}</div>
+                    <div>{item.date}</div>
+                  </Box>
+                </div>
               ))}
             </div>
           </div>

@@ -179,6 +179,13 @@ function App() {
             </div>
           </>
         )}
+        <div className="text-center">
+          Sudah menyerah ?{" "}
+          <a href="javascript:void(0)" onClick={handleNext}>
+            {" "}
+            klik disini
+          </a>
+        </div>
       </div>
     </>
   );
