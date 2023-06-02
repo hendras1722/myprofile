@@ -18,13 +18,13 @@ function App() {
   }, [navigate, sessionState]);
   return (
     <ChakraProvider>
-      <>
+      <div className="bg-container">
         <Routes>
           <Route path="/" element={<Home />}></Route>
           <Route path="/me" element={<Me />}></Route>
           <Route path="/about" element={<About />}></Route>
         </Routes>
-      </>
+      </div>
     </ChakraProvider>
   );
 }

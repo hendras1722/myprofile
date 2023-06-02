@@ -1,4 +1,17 @@
-import { HStack, Box, Heading, Text, Divider } from "@chakra-ui/react";
+import {
+  HStack,
+  Box,
+  Heading,
+  Text,
+  Divider,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalBody,
+  ModalCloseButton,
+  useDisclosure,
+} from "@chakra-ui/react";
 import ItsMe from "../assets/me.jpeg";
 import { Github } from "../modules/github.ts";
 import { useState } from "react";
@@ -8,6 +21,7 @@ function Me() {
   // const [stateLinkedin, setStateLinkedin] = useState<string>("");
   const [stateWhatsapp, setStateWhatsapp] = useState<string>("");
   const [open, setOpen] = useState<boolean>(false);
+  const [linkPreview, setLinkPreview] = useState<string>("");
 
   const workExperience = [
     {
@@ -40,14 +54,35 @@ function Me() {
     {
       name: "CIMB CCPL",
       date: "Jul 2021 - Sekarang",
+      company: "Privy",
     },
     {
       name: "CEISA 4.0",
       date: "Jul 2020 - Jun 2021",
+      company: "PT. Nastha Global Utama",
     },
     {
       name: "Alat Monitoring Suhu di Panel Gardu Induk",
       date: "Jun 2019 - Jun 2019",
+      company: "PT. PLN Gardu Induk Wonogiri",
+    },
+  ];
+
+  const certificate = [
+    {
+      name: "Boothcamp Arkademy",
+      date: "Feb 2021 - Mar 2021",
+      Description: "",
+    },
+    {
+      name: "Digital Talent Scholarship",
+      date: "Sep 2019 - Nov 2019",
+      Description: "",
+    },
+    {
+      name: "Bachelor Degree Electrical Engineering",
+      date: "September 2014 - November 2018",
+      Description: "",
     },
   ];
 
@@ -137,6 +172,7 @@ function Me() {
         borderWidth={rest["children"] ? "none" : "1px"}
         {...rest}
         background={rest["children"] ? "" : "white"}
+        opacity={1}
       >
         <Heading fontSize="4xl">{title}</Heading>
         <Text marginTop={"20px"} textAlign={"justify"}>
@@ -154,8 +190,63 @@ function Me() {
     e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
   ) => setStateWhatsapp(e.target.value);
 
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
+  const handleOpenCertificate = (event: Event) => {
+    switch (event.name) {
+      case "Boothcamp Arkademy":
+        setLinkPreview(
+          "https://drive.google.com/file/d/1PA-Ny5uoAGQL4KC0DOslRk2OCwY8FN0W/preview"
+        );
+        onOpen();
+
+        break;
+      case "Digital Talent Scholarship":
+        setLinkPreview(
+          "https://drive.google.com/file/d/1bfVP83YzsIfFsHlkkKCSbf6zVPDLGCB7/preview"
+        );
+        onOpen();
+
+        break;
+      case "Bachelor Degree Electrical Engineering":
+        setLinkPreview(
+          "https://drive.google.com/file/d/1yFYyfTG-tftuR4hMN0YjAHHj3ZC3-tOu/preview"
+        );
+        onOpen();
+
+        break;
+      default:
+        break;
+    }
+  };
+
   return (
     <>
+      {/* start modal */}
+      {/* <Button onClick={onOpen}>Open Modal</Button> */}
+      <Modal
+        id="modal-certificate"
+        isOpen={isOpen}
+        onClose={onClose}
+        size={"full"}
+      >
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>Preview</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>
+            <div>
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: `<iframe src="${linkPreview}" title="W3Schools Free Online Web Tutorials" style="width: 100%; height: 570px; display: block;"></iframe>`,
+                }}
+              ></div>
+            </div>
+          </ModalBody>
+        </ModalContent>
+      </Modal>
+
+      {/* end modal */}
       <div style={{ textAlign: "left" }} className="lg:px-28 pb-9">
         <div>
           <HStack spacing={8} alignItems={"start"}>
@@ -193,32 +284,46 @@ function Me() {
                     marginTop={3}
                     background={"white"}
                   >
-                    <div className="mt-3 text-lg font-medium">
-                      Address:{" "}
-                      <span className="text-sm font-medium">
+                    <div className="d-block">
+                      <div className="mt-3 text-lg font-medium">
+                        {" "}
+                        ───{" "}
+                        <span className="bg-blue-500 px-2 w-2 text-white rounded-full">
+                          Address
+                        </span>{" "}
+                        ───
+                      </div>
+                      <div className="text-sm font-medium">
                         Jl Beo 1 Perum Barito 1 blok A5 Rt 2/X Gonilan Kartasura
-                      </span>
+                      </div>
                     </div>
-                    <div className="mt-3 text-lg font-medium">
-                      Email:{" "}
-                      <span className="text-sm font-medium">
+                    <div className="d-block">
+                      <div className="mt-3 text-lg font-medium">
+                        {" "}
+                        ───{" "}
+                        <span className="bg-blue-500 px-2 w-2 text-white rounded-full">
+                          Email
+                        </span>{" "}
+                        ───{" "}
+                      </div>
+                      <div className="text-sm font-medium">
                         <a href="mailto:muhsyahendraa1722@gmail.com">
                           muhsyahendraa1722@gmail.com
-                        </a>
-                      </span>
+                        </a>{" "}
+                      </div>
                     </div>
-                    <div className="mt-3 text-lg font-medium">
-                      Skill:{" "}
-                      <span className="text-sm font-medium">
-                        ReactJS | NextJS | Nuxt | Vue | Javascript | React
-                        Native
-                      </span>
-                    </div>
-                    <div className="mt-3 text-lg font-medium">
-                      CV:{" "}
-                      <span className="text-sm font-medium">
-                        <a href="">Download</a>
-                      </span>
+                    <div className="d-block">
+                      <div className="mt-3 text-lg font-medium">
+                        {" "}
+                        ───{" "}
+                        <span className="bg-blue-500 px-2 w-2 text-white rounded-full">
+                          CV
+                        </span>{" "}
+                        ───
+                      </div>
+                      <div className="text-sm font-medium">
+                        <a href="">Download</a>{" "}
+                      </div>
                     </div>
                   </Box>
                 </div>
@@ -389,31 +494,25 @@ function Me() {
               marginTop={3}
               background={"white"}
             >
-              <div className="mt-3 text-lg font-medium">
-                Address:{" "}
-                <span className="text-sm font-medium">
+              <div className="d-block">
+                <div className="mt-3 text-lg font-medium">Address</div>
+                <div className="text-sm font-medium">
                   Jl Beo 1 Perum Barito 1 blok A5 Rt 2/X Gonilan Kartasura
-                </span>
+                </div>
               </div>
-              <div className="mt-3 text-lg font-medium">
-                Email:{" "}
-                <span className="text-sm font-medium">
+              <div className="d-block">
+                <div className="mt-3 text-lg font-medium">Email</div>
+                <div className="text-sm font-medium">
                   <a href="mailto:muhsyahendraa1722@gmail.com">
                     muhsyahendraa1722@gmail.com
                   </a>
-                </span>
+                </div>
               </div>
-              <div className="mt-3 text-lg font-medium">
-                Skill:{" "}
-                <span className="text-sm font-medium">
-                  ReactJS | NextJS | Nuxt | Vue
-                </span>
-              </div>
-              <div className="mt-3 text-lg font-medium mb-5 ">
-                CV:{" "}
-                <span className="text-sm font-medium">
+              <div className="d-block">
+                <div className="mt-3 text-lg font-medium">Email</div>
+                <div className="text-sm font-medium">
                   <a href="">Download</a>
-                </span>
+                </div>
               </div>
             </Box>
           </div>
@@ -461,9 +560,63 @@ function Me() {
                   >
                     <div className="font-bold">{item.name}</div>
                     <div>{item.date}</div>
+                    <div className="text-neutral-600 font-medium">
+                      <small>{item.company}</small>
+                    </div>
                   </Box>
                 </div>
               ))}
+            </div>
+
+            <div className="mb-5 ">
+              <Divider marginTop={5} />
+              <div className="mt-5 font-bold text-lg mb-5">
+                Certificate License
+              </div>
+              <div>
+                {certificate.map((item, index) => (
+                  <a
+                    key={index}
+                    onClick={() => handleOpenCertificate(item)}
+                    href="#modal-certificate"
+                  >
+                    <Box
+                      padding={3}
+                      shadow={"md"}
+                      borderWidth={"1px"}
+                      borderRadius={10}
+                      marginTop={3}
+                      background={"white"}
+                    >
+                      <div className="font-bold">{item.name}</div>
+                      <div>{item.date}</div>
+                      <div>{item.Description}</div>
+                    </Box>
+                  </a>
+                ))}
+              </div>
+            </div>
+
+            <div className="mb-5 ">
+              <Divider marginTop={5} />
+              <div className="mt-5 font-bold text-lg mb-5">Tech Skill</div>
+              <div>
+                <Box
+                  padding={3}
+                  shadow={"md"}
+                  borderWidth={"1px"}
+                  borderRadius={10}
+                  marginTop={3}
+                  background={"white"}
+                >
+                  <div className="flex justify-around py-44">
+                    <div>React</div>
+                    <div>vue</div>
+                    <div>Next</div>
+                    <div>Nuxt</div>
+                  </div>
+                </Box>
+              </div>
             </div>
           </div>
         </div>
