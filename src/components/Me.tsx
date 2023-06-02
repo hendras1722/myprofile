@@ -68,6 +68,12 @@ function Me() {
     },
   ];
 
+  interface ICertificated {
+    name: string;
+    date: string;
+    Description: string;
+  }
+
   const certificate = [
     {
       name: "Boothcamp Arkademy",
@@ -192,7 +198,7 @@ function Me() {
 
   const { isOpen, onOpen, onClose } = useDisclosure();
 
-  const handleOpenCertificate = (event: Event) => {
+  const handleOpenCertificate = (event: ICertificated): void => {
     switch (event.name) {
       case "Boothcamp Arkademy":
         setLinkPreview(
@@ -577,7 +583,7 @@ function Me() {
                 {certificate.map((item, index) => (
                   <a
                     key={index}
-                    onClick={() => handleOpenCertificate(item)}
+                    onClick={() => handleOpenCertificate(item as ICertificated)}
                     href="#modal-certificate"
                   >
                     <Box
