@@ -119,7 +119,7 @@ function Me() {
     });
   }
 
-  const handleClick = async (e: string): Promise<void> => {
+  const handleClick = async (e: string) => {
     switch (e) {
       case "github":
         setOpen(false);
@@ -164,7 +164,7 @@ function Me() {
     }
   };
 
-  const handleWhatsapp = (): void => {
+  const handleWhatsapp = () => {
     if (detectMob()) {
       return window.open(
         `whatsapp://send?phone=6289663604258&text=${encodeURIComponent(
