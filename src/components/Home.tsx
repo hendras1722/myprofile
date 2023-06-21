@@ -118,11 +118,12 @@ function App() {
 
   const handleSubmit = (e: React.KeyboardEvent, props: IHTMLTerimnal) => {
     let value = null;
-
+    console.log(e, "inie");
     const typing_text = document.getElementById(`typing_text${props.index}`);
     value = typing_text?.innerText;
+    const charCode = e.keyCode || e.which;
     if (!typing_text) return;
-    if (e.keyCode === 13) {
+    if (charCode === 13 || e.key === "Enter") {
       typing_text.blur();
       typing_text.setAttribute("contentEditable", "false");
 
