@@ -26,3 +26,24 @@
   background-size: cover;
   background-attachment: fixed;
 }
+
+.logoTech {
+  width: 200px;
+  object-fit: contain;
+  object-position: center center;
+  aspect-ratio: 16/9;
+}
+.logoTech:hover {
+  width: 300px;
+  transition: 1s ease;
+}
+
+
+.NewText{
+  border: none;
+  background-color: transparent;
+  width: 300px;
+}
+.NewText:focus{
+  outline: none;
+}

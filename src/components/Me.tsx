@@ -15,6 +15,13 @@ import {
 import ItsMe from "../assets/me.jpeg";
 import { Github } from "../modules/github.ts";
 import { useState } from "react";
+import {
+  NextImage,
+  ReactImage,
+  VueImage,
+  NuxtImage,
+} from "../assets/importImage.ts";
+// import CVPdf from "../assets/CV_Muh Syahendra A.pdf";
 
 function Me() {
   const [stateGithub, setStateGithub] = useState<Github[]>([]);
@@ -23,17 +30,21 @@ function Me() {
   const [open, setOpen] = useState<boolean>(false);
   const [linkPreview, setLinkPreview] = useState<string>("");
 
+  const oldDate = new Date("2021-07-01").getFullYear();
+  const newDate = new Date().getFullYear();
+  const result = newDate - oldDate;
+
   const workExperience = [
     {
       position: "Frontend Engineer",
       placeAndDate: "PrivyID · Purnawaktu",
-      date: "Jul 2021 - Saat ini · 1 thn 11 bln",
+      date: "Jul 2021 - Saat ini ·" + " " + result + " " + "thn Jul",
       place: "Daerah Istimewa Yogyakarta, Indonesia",
     },
     {
       position: "Frontend Developer",
       placeAndDate: "PT. NashTa Global Utama · Kontrak",
-      date: "Jul 2020 - Jun 2021 · 1 thnJul",
+      date: "Jul 2020 - Jun 2021 · 1 thn Jul",
       place: "Depok, Jawa Barat, Indonesia",
     },
     {
@@ -153,7 +164,7 @@ function Me() {
     }
   };
 
-  const handleWhatsapp = () => {
+  const handleWhatsapp = (): void => {
     if (detectMob()) {
       return window.open(
         `whatsapp://send?phone=6289663604258&text=${encodeURIComponent(
@@ -261,7 +272,10 @@ function Me() {
                 <div className="flex justify-center ">
                   <Feature style={{ boxShadow: "none" }}>
                     <div className="w-fit ">
-                      <img src={ItsMe} style={{ borderRadius: 50 }} />
+                      <img
+                        src={ItsMe}
+                        style={{ borderRadius: 50, width: 500 }}
+                      />
                     </div>
                   </Feature>
                 </div>
@@ -427,14 +441,15 @@ function Me() {
                     </div>
 
                     <div className="flex items-center justify-center">
-                      <button
+                      <a
                         className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                         typeof="button"
                         onClick={handleWhatsapp}
                         style={{ background: "#23D366" }}
+                        href="#Whatsapp"
                       >
                         Open Whatsapp
-                      </button>
+                      </a>
                     </div>
                   </form>
                 </Box>
@@ -501,23 +516,44 @@ function Me() {
               background={"white"}
             >
               <div className="d-block">
-                <div className="mt-3 text-lg font-medium">Address</div>
+                <div className="mt-3 text-lg font-medium">
+                  {" "}
+                  ───{" "}
+                  <span className="bg-blue-500 px-2 w-2 text-white rounded-full">
+                    Address
+                  </span>{" "}
+                  ───
+                </div>
                 <div className="text-sm font-medium">
                   Jl Beo 1 Perum Barito 1 blok A5 Rt 2/X Gonilan Kartasura
                 </div>
               </div>
               <div className="d-block">
-                <div className="mt-3 text-lg font-medium">Email</div>
+                <div className="mt-3 text-lg font-medium">
+                  {" "}
+                  ───{" "}
+                  <span className="bg-blue-500 px-2 w-2 text-white rounded-full">
+                    Email
+                  </span>{" "}
+                  ───
+                </div>
                 <div className="text-sm font-medium">
                   <a href="mailto:muhsyahendraa1722@gmail.com">
                     muhsyahendraa1722@gmail.com
                   </a>
                 </div>
-              </div>
-              <div className="d-block">
-                <div className="mt-3 text-lg font-medium">Email</div>
-                <div className="text-sm font-medium">
-                  <a href="">Download</a>
+                <div className="d-block">
+                  <div className="mt-3 text-lg font-medium">
+                    {" "}
+                    ───{" "}
+                    <span className="bg-blue-500 px-2 w-2 text-white rounded-full">
+                      CV
+                    </span>{" "}
+                    ───
+                  </div>
+                  <div className="text-sm font-medium">
+                    <a href="mailto:muhsyahendraa1722@gmail.com">Download</a>
+                  </div>
                 </div>
               </div>
             </Box>
@@ -614,12 +650,60 @@ function Me() {
                   borderRadius={10}
                   marginTop={3}
                   background={"white"}
+                  height={450}
                 >
-                  <div className="flex justify-around py-44">
-                    <div>React</div>
-                    <div>vue</div>
-                    <div>Next</div>
-                    <div>Nuxt</div>
+                  <div className="flex justify-around py-32">
+                    <div>
+                      <img src={ReactImage} alt="React" className="logoTech" />
+                      <div className="text-center mt-4">React JS</div>
+                    </div>
+                    <div>
+                      <img src={VueImage} alt="Vue" className="logoTech" />
+                      <div className="text-center mt-4">Vue JS</div>
+                    </div>
+                    <div>
+                      <img src={NextImage} alt="Next" className="logoTech" />
+                      <div className="text-center mt-4">Next JS</div>
+                    </div>
+                    <div>
+                      <img src={NuxtImage} alt="Nuxt" className="logoTech" />
+                      <div className="text-center mt-4">Nuxt JS</div>
+                    </div>
+                  </div>
+                </Box>
+              </div>
+            </div>
+
+            <div className="mb-5 ">
+              <Divider marginTop={5} />
+              <div className="mt-5 font-bold text-lg mb-5">Portofolio</div>
+              <div>
+                <Box
+                  padding={3}
+                  shadow={"md"}
+                  borderWidth={"1px"}
+                  borderRadius={10}
+                  marginTop={3}
+                  background={"white"}
+                  height={450}
+                >
+                  <div className="flex justify-around py-32">
+                    <div>
+                      <img src={ReactImage} alt="React" className="logoTech" />
+                      <div className="text-center mt-4">React JS</div>
+                    </div>
+                    <div>
+                      <img src={VueImage} alt="Vue" className="logoTech" />
+                      <div className="text-center mt-4">Vue JS</div>
+                    </div>
+                    <div>
+                      <img src={NextImage} alt="Next" className="logoTech" />
+                      <div className="text-center mt-4">Next JS</div>
+                    </div>
+                    <div>
+                      <img src={NuxtImage} alt="Nuxt" className="logoTech" />
+                      <div className="text-center mt-4">Nuxt JS</div>
+                    </div>
                   </div>
                 </Box>
               </div>
