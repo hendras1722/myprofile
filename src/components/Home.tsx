@@ -124,6 +124,7 @@ function App() {
     if (!typing_text) return;
     if (e.keyCode === 13) {
       typing_text.blur();
+      typing_text.setAttribute("contentEditable", "false");
 
       if (value?.includes("npm")) {
         if (value.includes("npm i msa") || value.includes("npm install msa")) {
