@@ -23,12 +23,14 @@ export interface Item {
 
 function App() {
   const [codeStatus, setCodeStatus] = useState<boolean>();
+  const container_typing = document.getElementById("container_typing");
+
   const el = useRef<HTMLDivElement>(null);
   const navigate = useNavigate();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [dataTerminal, setDataTerminal] = useState([
     {
-      html: "input",
+      html: "text",
     },
   ]);
 
@@ -44,6 +46,7 @@ function App() {
   useEffect(() => {
     const typing_text = document.getElementById(`typing_text0`);
     if (typing_text) typing_text.focus();
+    typeText("mount");
     sessionStorage.removeItem("poor");
   }, []);
 
@@ -82,6 +85,14 @@ function App() {
         line4 = "";
         line5 = ``;
       }
+      if (e === "mount") {
+        line1 = "Instruction:\n";
+        line2 =
+          "npm install msa => for get my profile\n name or my name => for get my name";
+        line3 = "";
+        line4 = "";
+        line5 = ``;
+      }
       const birtday = new Date("1996-12-22");
       const today = new Date();
 
@@ -101,28 +112,73 @@ function App() {
       if (line1) {
         typed.type(line1, { errorMultiplier: 0 });
         typed.wait(1500);
+        if (container_typing)
+          container_typing.scrollTo({
+            left: 0,
+            top: 10000000000000000,
+            behavior: "smooth",
+          });
       }
       if (line2) {
         typed.type(line2, { errorMultiplier: 0 });
         typed.wait(1500);
+        if (container_typing)
+          container_typing.scrollTo({
+            left: 0,
+            top: 10000000000000000,
+            behavior: "smooth",
+          });
       }
       if (line3) {
         typed.type(line3, { errorMultiplier: 0 });
         typed.wait(1500);
+        if (container_typing)
+          container_typing.scrollTo({
+            left: 0,
+            top: 10000000000000000,
+            behavior: "smooth",
+          });
       }
       if (randomValue) {
         if (line4) {
           typed.type(line4, { errorMultiplier: 0, className: "successTyped" });
           typed.wait(1500);
+          if (container_typing)
+            container_typing.scrollTo({
+              left: 0,
+              top: 10000000000000000,
+              behavior: "smooth",
+            });
+
           typed.type("====================\n", { errorMultiplier: 0 });
           typed.wait(1000);
+          if (container_typing)
+            container_typing.scrollTo({
+              left: 0,
+              top: 10000000000000000,
+              behavior: "smooth",
+            });
+
           typed.type("MSA Begin\n", {
             errorMultiplier: 0,
             className: "fontWeight",
           });
           typed.wait(1000);
           typed.type("====================\n", { errorMultiplier: 0 });
+          if (container_typing)
+            container_typing.scrollTo({
+              left: 0,
+              top: 10000000000000000,
+              behavior: "smooth",
+            });
+
           typed.wait(1000);
+          if (container_typing)
+            container_typing.scrollTo({
+              left: 0,
+              top: 10000000000000000,
+              behavior: "smooth",
+            });
         }
       } else {
         if (line5) {
@@ -132,13 +188,34 @@ function App() {
             className: "errorTyped",
           });
           typed.wait(3000);
+          if (container_typing)
+            container_typing.scrollTo({
+              left: 0,
+              top: 10000000000000000,
+              behavior: "smooth",
+            });
+
           typed.type("====================\n", { errorMultiplier: 0 });
           typed.wait(1000);
+          if (container_typing)
+            container_typing.scrollTo({
+              left: 0,
+              top: 10000000000000000,
+              behavior: "smooth",
+            });
+
           typed.type("Oh no, please try again...\n", {
             errorMultiplier: 0,
             className: "fontWeight",
           });
           typed.wait(1000);
+          if (container_typing)
+            container_typing.scrollTo({
+              left: 0,
+              top: 10000000000000000,
+              behavior: "smooth",
+            });
+
           typed.type("====================\n", { errorMultiplier: 0 });
           typed.wait(1000);
         }
@@ -150,11 +227,14 @@ function App() {
           html: "input",
         },
       ]);
-      // const typing_text = document.getElementById(`typing_text${e + 1}`);
-      // typing_text?.focus();
-      setCodeStatus(randomValue);
+      if (container_typing)
+        container_typing.scrollTo({
+          left: 0,
+          top: 10000000000000000,
+          behavior: "smooth",
+        });
 
-      // typed.reset();
+      setCodeStatus(randomValue);
     };
     type();
   };
@@ -173,10 +253,10 @@ function App() {
 
       if (value?.includes("npm")) {
         if (
-          value.includes("npm i") ||
-          value.includes("npm install") ||
-          value.includes("npm i msa") ||
-          value.includes("npm install msa")
+          value.toLocaleLowerCase().includes("npm i") ||
+          value.toLocaleLowerCase().includes("npm install") ||
+          value.toLocaleLowerCase().includes("npm i msa") ||
+          value.toLocaleLowerCase().includes("npm install msa")
         ) {
           setDataTerminal([
             ...dataTerminal,
@@ -185,10 +265,20 @@ function App() {
             },
           ]);
           typeText("npm");
+
+          if (container_typing)
+            container_typing.scrollTo({
+              left: 0,
+              top: 10000000000000000,
+              behavior: "smooth",
+            });
         }
         return;
       }
-      if (value?.includes("name")) {
+      if (
+        value?.toLocaleLowerCase().includes("name") ||
+        value?.toLocaleLowerCase().includes("my name")
+      ) {
         setDataTerminal([
           ...dataTerminal,
           {
@@ -198,7 +288,10 @@ function App() {
         typeText("name");
         return;
       }
-      if (value?.includes("umur") || value?.includes("age")) {
+      if (
+        value?.toLocaleLowerCase().includes("umur") ||
+        value?.toLocaleLowerCase().includes("age")
+      ) {
         setDataTerminal([
           ...dataTerminal,
           {
