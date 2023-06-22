@@ -669,22 +669,24 @@ function App() {
         new Date().getSeconds();
       return (
         <>
-          <div className="flex">
-            <span
-              className="text-white text-sm flex items-center fontTerminal"
-              style={{ width: "100px" }}
-            >
-              {dateNow} =&#62; $
-            </span>
-            <div className="text-white  w-screen ">
-              <div>
-                <div
-                  id={"typing_text" + props.index}
-                  contentEditable
-                  className="no-underline text-white focus:outline-none fontTerminal"
-                  onKeyDown={(event) => handleSubmit(event, props)}
-                  onMouseDown={handleMouseEvent}
-                ></div>
+          <div>
+            <div className="flex">
+              <span
+                className="text-white text-sm flex items-center fontTerminal"
+                style={{ width: "100px" }}
+              >
+                {dateNow} =&#62; $
+              </span>
+              <div className="text-white  w-screen ">
+                <div>
+                  <div
+                    id={"typing_text" + props.index}
+                    contentEditable
+                    className="no-underline text-white focus:outline-none fontTerminal"
+                    onKeyDown={(event) => handleSubmit(event, props)}
+                    onMouseDown={handleMouseEvent}
+                  ></div>
+                </div>
               </div>
             </div>
           </div>
