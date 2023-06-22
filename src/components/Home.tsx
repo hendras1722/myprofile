@@ -50,9 +50,9 @@ function App() {
     sessionStorage.removeItem("poor");
   }, []);
 
-  const handleRetry = () => {
-    window.location.reload();
-  };
+  // const handleRetry = () => {
+  //   window.location.reload();
+  // };
 
   const typeText = (e: string, value?: string) => {
     const typed = new Typed({
@@ -71,8 +71,14 @@ function App() {
       let randomValue = undefined;
       const a = [true, false];
       if (e.includes("npm")) {
-        if (e.includes("npm not")) {
-          line1 = `package ${value} not registered\n`;
+        if (e.includes("npm list")) {
+          line1 = `msa: what do you mean ${value}?\n`;
+          line2 = "";
+          line3 = "";
+          line4 = "";
+          line5 = ``;
+        } else if (e.includes("npm not")) {
+          line1 = `msa: package ${value} not registered\n`;
           line2 = "";
           line3 = "";
           line4 = "";
@@ -96,7 +102,7 @@ function App() {
       if (e === "mount") {
         line1 = "Instruction:\n";
         line2 =
-          "npm install msa => for get my profile\n name or my name => for get my name";
+          "\t\t npm install msa => for get my profile\n \t\tname or my name => for get my name\n \t\tclear => for clear text";
         line3 = "";
         line4 = "";
         line5 = ``;
@@ -111,6 +117,13 @@ function App() {
 
       if (e === "age") {
         line1 = ageYears + " " + "years old";
+        line2 = "";
+        line3 = "";
+        line4 = "";
+        line5 = ``;
+      }
+      if (e === "not found") {
+        line1 = "msa: command not found";
         line2 = "";
         line3 = "";
         line4 = "";
@@ -238,12 +251,19 @@ function App() {
         }
       }
       await typed.run();
+      // console.log(
+      //   typing_text,
+      //   dataTerminal.length,
+      //   document.getElementById(`typing_text` + dataTerminal.length),
+      //   "inityping_text"
+      // );
       setDataTerminal((prev) => [
         ...prev,
         {
           html: "input",
         },
       ]);
+
       if (container_typing)
         container_typing.scrollTo({
           left: 0,
@@ -269,11 +289,24 @@ function App() {
       typing_text.setAttribute("contentEditable", "false");
 
       if (value?.includes("npm")) {
+        if (value.toLocaleLowerCase().replace(/^\s{1,}/gm, "") === "npm") {
+          setDataTerminal([
+            ...dataTerminal,
+            {
+              html: "text",
+            },
+          ]);
+          typeText("npm list", "'npm i msa'");
+
+          return;
+        }
         if (
-          value.toLocaleLowerCase() === "npm i" ||
-          value.toLocaleLowerCase() === "npm install" ||
-          value.toLocaleLowerCase() === "npm i msa" ||
-          value.toLocaleLowerCase() === "npm install msa"
+          value.toLocaleLowerCase().replace(/^\s{1,}/gm, "") === "npm i" ||
+          value.toLocaleLowerCase().replace(/^\s{1,}/gm, "") ===
+            "npm install" ||
+          value.toLocaleLowerCase().replace(/^\s{1,}/gm, "") === "npm i msa" ||
+          value.toLocaleLowerCase().replace(/^\s{1,}/gm, "") ===
+            "npm install msa"
         ) {
           setDataTerminal([
             ...dataTerminal,
@@ -302,8 +335,14 @@ function App() {
         return;
       }
       if (
-        value?.toLocaleLowerCase().includes("name") ||
-        value?.toLocaleLowerCase().includes("my name")
+        value
+          ?.toLocaleLowerCase()
+          .replace(/^\s{1,}/gm, "")
+          .includes("name") ||
+        value
+          ?.toLocaleLowerCase()
+          .replace(/^\s{1,}/gm, "")
+          .includes("my name")
       ) {
         setDataTerminal([
           ...dataTerminal,
@@ -315,8 +354,14 @@ function App() {
         return;
       }
       if (
-        value?.toLocaleLowerCase().includes("umur") ||
-        value?.toLocaleLowerCase().includes("age")
+        value
+          ?.toLocaleLowerCase()
+          .replace(/^\s{1,}/gm, "")
+          .includes("umur") ||
+        value
+          ?.toLocaleLowerCase()
+          .replace(/^\s{1,}/gm, "")
+          .includes("age")
       ) {
         setDataTerminal([
           ...dataTerminal,
@@ -327,7 +372,7 @@ function App() {
         typeText("age");
         return;
       }
-      if (value?.toLocaleLowerCase() === "clear") {
+      if (value?.toLocaleLowerCase().replace(/^\s{1,}/gm, "") === "clear") {
         setDataTerminal([
           {
             html: "input",
@@ -335,12 +380,35 @@ function App() {
         ]);
         return;
       }
+      console.log(
+        typeof value?.toLocaleLowerCase().replace(/^\s{1,}/gm, ""),
+        "inifalse"
+      );
+      if (value?.toLocaleLowerCase().replace(/^\s{1,}/gm, "") === "") {
+        setDataTerminal([
+          ...dataTerminal,
+          {
+            html: "input",
+          },
+        ]);
+        return;
+      }
+      // if (el.current) el.current.innerHTML = "command not found";
       setDataTerminal([
         ...dataTerminal,
         {
-          html: "input",
+          html: "text",
         },
       ]);
+      typeText("not found");
+      // setTimeout(() => {
+      // setDataTerminal([
+      //   ...dataTerminal,
+      //   {
+      //     html: "input",
+      //   },
+      // ]);
+      // }, 500);
 
       // return;
     }
@@ -363,7 +431,10 @@ function App() {
       return (
         <>
           <div className="flex">
-            <span className="text-white text-sm mt-1 w-20 fontTerminal">
+            <span
+              className="text-white text-sm flex items-center fontTerminal"
+              style={{ width: "100px" }}
+            >
               {dateNow} =&#62; $
             </span>
             <div className="text-white  w-screen ">
@@ -371,7 +442,7 @@ function App() {
                 <div
                   id={"typing_text" + props.index}
                   contentEditable
-                  className="text-white focus:outline-none ml-2 fontTerminal"
+                  className="no-underline text-white focus:outline-none fontTerminal"
                   onKeyDown={(event) => handleSubmit(event, props)}
                   onMouseDown={handleMouseEvent}
                 ></div>
@@ -399,11 +470,11 @@ function App() {
   return (
     <>
       <div>
-        <div className="bg-blue-700 h-12 flex justify-end p-2 items-center">
+        <div className="bg-blue-900 h-12 flex justify-end p-2 items-center">
           <div className="w-20 flex justify-between">
-            <div className="bg-red-100 h-4 w-4 rounded-xl"></div>
-            <div className="bg-red-100 h-4 w-4 rounded-xl"></div>
-            <div className="bg-red-100 h-4 w-4 rounded-xl"></div>
+            <div className="bg-red-100 h-5 w-5 rounded-xl button_terminal"></div>
+            <div className="bg-red-100 h-5 w-5 rounded-xl button_terminal"></div>
+            <div className="bg-red-100 h-5 w-5 rounded-xl button_terminal"></div>
           </div>
         </div>
         <div
@@ -454,7 +525,7 @@ function App() {
                 </q>
               </p>
             </div>
-            <div
+            {/* <div
               style={{
                 display: "flex",
                 justifyContent: "center",
@@ -464,7 +535,7 @@ function App() {
               <Button onClick={handleRetry} colorScheme="red">
                 Retry
               </Button>
-            </div>
+            </div> */}
             <div className="text-center">
               Sudah menyerah ?{" "}
               <a

@@ -53,3 +53,20 @@
 .fontTerminal{
   font-family: 'VT323';
 }
+
+.button_terminal:nth-child(1){
+  background-color: #EF4444;
+  border: 2px solid #1e3458;
+}
+
+.button_terminal:nth-child(2){
+  background-color: #F59E0B;
+  border: 2px solid #1e3458;
+
+}
+
+.button_terminal:nth-child(3){
+  background-color: #11B981;
+  border: 2px solid #1e3458;
+
+}
