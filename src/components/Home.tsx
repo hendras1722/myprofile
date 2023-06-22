@@ -522,7 +522,7 @@ function App() {
         return;
       }
 
-      if (value.includes("npm")) {
+      if (value.toLocaleLowerCase().includes("npm")) {
         if (value.toLocaleLowerCase().replace(/^\s{1,}/gm, "") === "npm") {
           setDataTerminal([
             ...dataTerminal,
