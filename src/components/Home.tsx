@@ -54,7 +54,7 @@ function App() {
     window.location.reload();
   };
 
-  const typeText = (e: string) => {
+  const typeText = (e: string, value?: string) => {
     const typed = new Typed({
       callback: (text) => {
         if (el.current) {
@@ -70,13 +70,21 @@ function App() {
       let line5 = "";
       let randomValue = undefined;
       const a = [true, false];
-      if (e === "npm") {
-        randomValue = a[Math.floor(a.length * Math.random())];
-        line1 = "npm install MSA\n";
-        line2 = "Installing components...\n";
-        line3 = "Fetching from source...\n";
-        line4 = "Success 200 🤪\n";
-        line5 = `Failed 403 😭\n`;
+      if (e.includes("npm")) {
+        if (e.includes("npm not")) {
+          line1 = `package ${value} not registered\n`;
+          line2 = "";
+          line3 = "";
+          line4 = "";
+          line5 = ``;
+        } else {
+          randomValue = a[Math.floor(a.length * Math.random())];
+          line1 = "npm install MSA\n";
+          line2 = "Installing components...\n";
+          line3 = "Fetching from source...\n";
+          line4 = "Success 200 🤪\n";
+          line5 = `Failed 403 😭\n`;
+        }
       }
       if (e === "name") {
         line1 = "My Name is Muh Syahendra A";
@@ -110,7 +118,13 @@ function App() {
       }
 
       if (line1) {
-        typed.type(line1, { errorMultiplier: 0 });
+        typed.type(line1, {
+          errorMultiplier: 0,
+          className:
+            ((e.includes("npm not") || e.includes("mount")) &&
+              "text-sm italic") ||
+            "",
+        });
         typed.wait(1500);
         if (container_typing)
           container_typing.scrollTo({
@@ -120,7 +134,10 @@ function App() {
           });
       }
       if (line2) {
-        typed.type(line2, { errorMultiplier: 0 });
+        typed.type(line2, {
+          errorMultiplier: 0,
+          className: (e.includes("mount") && "text-sm italic") || "",
+        });
         typed.wait(1500);
         if (container_typing)
           container_typing.scrollTo({
@@ -241,10 +258,10 @@ function App() {
 
   const handleSubmit = (e: React.KeyboardEvent, props: IHTMLTerimnal) => {
     let value = null;
-    console.log(e, "inie");
+
     const typing_text = document.getElementById(`typing_text${props.index}`);
     value = typing_text?.innerText;
-    console.log(value, "inivalue");
+
     const charCode = e.keyCode || e.which;
     if (!typing_text) return;
     if (charCode === 13 || e.key === "Enter") {
@@ -253,10 +270,10 @@ function App() {
 
       if (value?.includes("npm")) {
         if (
-          value.toLocaleLowerCase().includes("npm i") ||
-          value.toLocaleLowerCase().includes("npm install") ||
-          value.toLocaleLowerCase().includes("npm i msa") ||
-          value.toLocaleLowerCase().includes("npm install msa")
+          value.toLocaleLowerCase() === "npm i" ||
+          value.toLocaleLowerCase() === "npm install" ||
+          value.toLocaleLowerCase() === "npm i msa" ||
+          value.toLocaleLowerCase() === "npm install msa"
         ) {
           setDataTerminal([
             ...dataTerminal,
@@ -272,6 +289,15 @@ function App() {
               top: 10000000000000000,
               behavior: "smooth",
             });
+        } else {
+          const textsplit = value.toLocaleLowerCase().split(" ");
+          setDataTerminal([
+            ...dataTerminal,
+            {
+              html: "text",
+            },
+          ]);
+          typeText("npm not", textsplit[textsplit.length - 1]);
         }
         return;
       }
@@ -301,6 +327,14 @@ function App() {
         typeText("age");
         return;
       }
+      if (value?.toLocaleLowerCase() === "clear") {
+        setDataTerminal([
+          {
+            html: "input",
+          },
+        ]);
+        return;
+      }
       setDataTerminal([
         ...dataTerminal,
         {
@@ -320,16 +354,24 @@ function App() {
   const HtmlTerminal = (props: IHTMLTerimnal) => {
     if (!props) return "wewe";
     if (props.item.html === "input") {
+      const dateNow =
+        new Date().getHours() +
+        ":" +
+        new Date().getMinutes() +
+        ":" +
+        new Date().getSeconds();
       return (
         <>
           <div className="flex">
-            <span className="text-white">$ </span>
+            <span className="text-white text-sm mt-1 w-20 fontTerminal">
+              {dateNow} =&#62; $
+            </span>
             <div className="text-white  w-screen ">
               <div>
                 <div
                   id={"typing_text" + props.index}
                   contentEditable
-                  className="text-white focus:outline-none ml-2 "
+                  className="text-white focus:outline-none ml-2 fontTerminal"
                   onKeyDown={(event) => handleSubmit(event, props)}
                   onMouseDown={handleMouseEvent}
                 ></div>
@@ -347,7 +389,7 @@ function App() {
           }}
           className="text-white"
         >
-          <span ref={el} />
+          <span ref={el} className="fontTerminal" />
         </div>
       );
     }

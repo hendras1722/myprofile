@@ -1,3 +1,5 @@
+@import url('./font.css');
+
 .modalContent {
   opacity: 1 !important;
   background-color: transparent;
@@ -46,4 +48,8 @@
 }
 .NewText:focus{
   outline: none;
+}
+
+.fontTerminal{
+  font-family: 'VT323';
 }
