@@ -85,17 +85,24 @@ function App() {
             line5 = `Failed 403 😭\n`;
           }
         }
-        if (e === "name") {
+        if (e === "msa name") {
           line1 = "My Name is Muh Syahendra A";
           line2 = "";
           line3 = "";
           line4 = "";
           line5 = ``;
         }
-        if (e === "mount") {
+        if (e === "mount 1") {
           line1 = "Instruction:\n";
           line2 =
             "\t\t npm install msa => for get my profile\n \t\tname or my name => for get my name\n \t\tclear => for clear text";
+          line3 = "";
+          line4 = "";
+          line5 = ``;
+        }
+        if (e === "mount") {
+          line1 = "Welcome to juggle. for help command you can typing msa\n";
+          line2 = "";
           line3 = "";
           line4 = "";
           line5 = ``;
@@ -108,7 +115,7 @@ function App() {
           ageMilisecond / (1000 * 60 * 60 * 24 * 365.25)
         );
 
-        if (e === "age") {
+        if (e === "msa age") {
           line1 = ageYears + " " + "years old";
           line2 = "";
           line3 = "";
@@ -247,12 +254,6 @@ function App() {
           }
         }
         await typed.run();
-        // console.log(
-        //   typing_text,
-        //   dataTerminal.length,
-        //   document.getElementById(`typing_text` + dataTerminal.length),
-        //   "inityping_text"
-        // );
         setDataTerminal((prev) => [
           ...prev,
           {
@@ -295,6 +296,14 @@ function App() {
       let line5 = "";
       let randomValue = undefined;
       const a = [true, false];
+      if (e === "msa") {
+        line1 = "usage: <_optional_> msa <_command_>\n";
+        line2 =
+          "where <_command_> is one of: \n\t name, age, clear, phone, email, marry\n";
+        line3 = "where <_optional_> is: \n\t npm i or npm install";
+        line4 = "";
+        line5 = ``;
+      }
       if (e.includes("npm")) {
         if (e.includes("npm list")) {
           line1 = `msa: what do you mean ${value}?\n`;
@@ -317,7 +326,7 @@ function App() {
           line5 = `Failed 403 😭\n`;
         }
       }
-      if (e === "name") {
+      if (e === "msa name") {
         line1 = "My Name is Muh Syahendra A";
         line2 = "";
         line3 = "";
@@ -340,7 +349,7 @@ function App() {
         ageMilisecond / (1000 * 60 * 60 * 24 * 365.25)
       );
 
-      if (e === "age") {
+      if (e === "msa age") {
         line1 = ageYears + " " + "years old";
         line2 = "";
         line3 = "";
@@ -572,7 +581,7 @@ function App() {
         value
           .toLocaleLowerCase()
           .replace(/^\s{1,}/gm, "")
-          .includes("name") ||
+          .includes("msa name") ||
         value
           ?.toLocaleLowerCase()
           .replace(/^\s{1,}/gm, "")
@@ -584,7 +593,7 @@ function App() {
             html: "text",
           },
         ]);
-        typeText("name");
+        typeText("msa name");
         return;
       }
       if (
@@ -595,7 +604,7 @@ function App() {
         value
           .toLocaleLowerCase()
           .replace(/^\s{1,}/gm, "")
-          .includes("age")
+          .includes("msa age")
       ) {
         setDataTerminal([
           ...dataTerminal,
@@ -603,14 +612,14 @@ function App() {
             html: "text",
           },
         ]);
-        typeText("age");
+        typeText("msa age");
         return;
       }
       if (
         value
           .toLocaleLowerCase()
           .replace(/^\s{1,}/gm, "")
-          .includes("clear")
+          .includes("msa clear")
       ) {
         setDataTerminal([
           {
@@ -619,10 +628,7 @@ function App() {
         ]);
         return;
       }
-      console.log(
-        typeof value?.toLocaleLowerCase().replace(/^\s{1,}/gm, ""),
-        "inifalse"
-      );
+
       if (value.toLocaleLowerCase().replace(/^\s{1,}/gm, "") === "") {
         setDataTerminal([
           ...dataTerminal,
@@ -630,6 +636,17 @@ function App() {
             html: "input",
           },
         ]);
+        return;
+      }
+
+      if (value.toLocaleLowerCase().replace(/^\s{1,}/gm, "") === "msa") {
+        setDataTerminal([
+          ...dataTerminal,
+          {
+            html: "text",
+          },
+        ]);
+        typeText("msa");
         return;
       }
       // if (el.current) el.current.innerHTML = "command not found";
@@ -697,7 +714,7 @@ function App() {
       return (
         <div
           style={{
-            whiteSpace: "pre-line",
+            whiteSpace: "pre",
           }}
           className="text-white"
         >

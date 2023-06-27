@@ -14,7 +14,7 @@ import {
 } from "@chakra-ui/react";
 import ItsMe from "../assets/me.jpeg";
 import { Github } from "../modules/github.ts";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   NextImage,
   ReactImage,
@@ -236,11 +236,31 @@ function Me() {
         break;
     }
   };
+  useEffect(() => {
+    const body = document.getElementById("canvas") as HTMLCanvasElement;
+    const img = document.createElement("img");
+    img.src = ItsMe;
+    img.style.width = "500px";
+    img.style.borderRadius = "50px";
+
+    const context = body.getContext("2d");
+    body.width = img.width;
+    body.height = img.height;
+
+    if (!context) return;
+    context.drawImage(img, 0, 0, img.width, img.height);
+  });
+
+  const handleClickMouse = (e: React.MouseEvent<HTMLCanvasElement>) => {
+    if (e.button === 2) {
+      // right click
+      e.preventDefault();
+      return false; // do nothing!
+    }
+  };
 
   return (
     <>
-      {/* start modal */}
-      {/* <Button onClick={onOpen}>Open Modal</Button> */}
       <Modal
         id="modal-certificate"
         isOpen={isOpen}
@@ -262,7 +282,6 @@ function Me() {
           </ModalBody>
         </ModalContent>
       </Modal>
-
       {/* end modal */}
       <div style={{ textAlign: "left" }} className="lg:px-28 pb-9">
         <div>
@@ -271,11 +290,13 @@ function Me() {
               <Box>
                 <div className="flex justify-center ">
                   <Feature style={{ boxShadow: "none" }}>
-                    <div className="w-fit ">
-                      <img
-                        src={ItsMe}
-                        style={{ borderRadius: 50, width: 500 }}
-                      />
+                    <div className="w-fit">
+                      <canvas
+                        onMouseDown={handleClickMouse}
+                        onContextMenu={handleClickMouse}
+                        className="rounded-2xl"
+                        id="canvas"
+                      ></canvas>
                     </div>
                   </Feature>
                 </div>
