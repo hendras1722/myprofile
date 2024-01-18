@@ -29,15 +29,22 @@ function App() {
   const el = useRef<HTMLDivElement>(null)
   const navigate = useNavigate()
   const { isOpen, onOpen, onClose } = useDisclosure()
+  const secondDate =
+    new Date().getSeconds() <= 9
+      ? '0' + new Date().getSeconds()
+      : '' + new Date().getSeconds()
+  const minuteDate =
+    new Date().getMinutes() <= 9
+      ? '0' + new Date().getMinutes()
+      : '' + new Date().getMinutes()
+  const hourDate =
+    new Date().getHours() <= 9
+      ? '0' + new Date().getHours()
+      : '' + new Date().getHours()
   const [dataTerminal, setDataTerminal] = useState([
     {
       html: 'text',
-      created_at:
-        new Date().getHours() +
-        ':' +
-        new Date().getMinutes() +
-        ':' +
-        new Date().getSeconds(),
+      created_at: hourDate + ':' + minuteDate + ':' + secondDate,
     },
   ])
 
@@ -54,6 +61,18 @@ function App() {
     const typing_text = document.getElementById(`typing_text0`)
     if (typing_text) typing_text.focus()
     const container_typing = document.getElementById('container_typing')
+    const second =
+      new Date().getSeconds() <= 9
+        ? '0' + new Date().getSeconds()
+        : '' + new Date().getSeconds()
+    const minute =
+      new Date().getMinutes() <= 9
+        ? '0' + new Date().getMinutes()
+        : '' + new Date().getMinutes()
+    const hour =
+      new Date().getHours() <= 9
+        ? '0' + new Date().getHours()
+        : '' + new Date().getHours()
     const typeTexts = (e: string, value?: string) => {
       const typed = new Typed({
         callback: (text) => {
@@ -265,12 +284,7 @@ function App() {
           ...prev,
           {
             html: 'input',
-            created_at:
-              new Date().getHours() +
-              ':' +
-              new Date().getMinutes() +
-              ':' +
-              new Date().getSeconds(),
+            created_at: hour + ':' + minute + ':' + second,
           },
         ])
 
@@ -517,16 +531,23 @@ function App() {
       //   document.getElementById(`typing_text` + dataTerminal.length),
       //   "inityping_text"
       // );
+      const second =
+        new Date().getSeconds() <= 9
+          ? '0' + new Date().getSeconds()
+          : '' + new Date().getSeconds()
+      const minute =
+        new Date().getMinutes() <= 9
+          ? '0' + new Date().getMinutes()
+          : '' + new Date().getMinutes()
+      const hour =
+        new Date().getHours() <= 9
+          ? '0' + new Date().getHours()
+          : '' + new Date().getHours()
       setDataTerminal((prev) => [
         ...prev,
         {
           html: 'input',
-          created_at:
-            new Date().getHours() +
-            ':' +
-            new Date().getMinutes() +
-            ':' +
-            new Date().getSeconds(),
+          created_at: hour + ':' + minute + ':' + second,
         },
       ])
 
@@ -547,24 +568,31 @@ function App() {
 
     const typing_text = document.getElementById(`typing_text${props.index}`)
     value = typing_text?.innerText
+    const second =
+      new Date().getSeconds() <= 9
+        ? '0' + new Date().getSeconds()
+        : '' + new Date().getSeconds()
+    const minute =
+      new Date().getMinutes() <= 9
+        ? '0' + new Date().getMinutes()
+        : '' + new Date().getMinutes()
+    const hour =
+      new Date().getHours() <= 9
+        ? '0' + new Date().getHours()
+        : '' + new Date().getHours()
 
     const charCode = e.keyCode || e.which
     if (!typing_text) return
     if (charCode === 13 || e.key == 'Enter' || e.code == 'Enter') {
       typing_text.blur()
       typing_text.setAttribute('contentEditable', 'false')
-      console.log(value, 'inierwe')
+      console.log(hour + ':' + minute + ':' + second, 'ininwewe')
       if (!value) {
         setDataTerminal([
           ...dataTerminal,
           {
             html: 'text',
-            created_at:
-              new Date().getHours() +
-              ':' +
-              new Date().getMinutes() +
-              ':' +
-              new Date().getSeconds(),
+            created_at: hour + ':' + minute + ':' + second,
           },
         ])
         typeText('text empty')
@@ -577,12 +605,7 @@ function App() {
             ...dataTerminal,
             {
               html: 'text',
-              created_at:
-                new Date().getHours() +
-                ':' +
-                new Date().getMinutes() +
-                ':' +
-                new Date().getSeconds(),
+              created_at: hour + ':' + minute + ':' + second,
             },
           ])
           typeText('npm list', "'npm i msa'")
@@ -601,12 +624,7 @@ function App() {
             ...dataTerminal,
             {
               html: 'text',
-              created_at:
-                new Date().getHours() +
-                ':' +
-                new Date().getMinutes() +
-                ':' +
-                new Date().getSeconds(),
+              created_at: hour + ':' + minute + ':' + second,
             },
           ])
           typeText('npm')
@@ -623,12 +641,7 @@ function App() {
             ...dataTerminal,
             {
               html: 'text',
-              created_at:
-                new Date().getHours() +
-                ':' +
-                new Date().getMinutes() +
-                ':' +
-                new Date().getSeconds(),
+              created_at: hour + ':' + minute + ':' + second,
             },
           ])
           typeText('npm not', textsplit[textsplit.length - 1])
@@ -649,12 +662,7 @@ function App() {
           ...dataTerminal,
           {
             html: 'text',
-            created_at:
-              new Date().getHours() +
-              ':' +
-              new Date().getMinutes() +
-              ':' +
-              new Date().getSeconds(),
+            created_at: hour + ':' + minute + ':' + second,
           },
         ])
         typeText('msa name')
@@ -674,12 +682,7 @@ function App() {
           ...dataTerminal,
           {
             html: 'text',
-            created_at:
-              new Date().getHours() +
-              ':' +
-              new Date().getMinutes() +
-              ':' +
-              new Date().getSeconds(),
+            created_at: hour + ':' + minute + ':' + second,
           },
         ])
         typeText('msa age')
@@ -694,12 +697,7 @@ function App() {
         setDataTerminal([
           {
             html: 'input',
-            created_at:
-              new Date().getHours() +
-              ':' +
-              new Date().getMinutes() +
-              ':' +
-              new Date().getSeconds(),
+            created_at: hour + ':' + minute + ':' + second,
           },
         ])
         return
@@ -710,12 +708,7 @@ function App() {
           ...dataTerminal,
           {
             html: 'input',
-            created_at:
-              new Date().getHours() +
-              ':' +
-              new Date().getMinutes() +
-              ':' +
-              new Date().getSeconds(),
+            created_at: hour + ':' + minute + ':' + second,
           },
         ])
         return
@@ -726,12 +719,7 @@ function App() {
           ...dataTerminal,
           {
             html: 'text',
-            created_at:
-              new Date().getHours() +
-              ':' +
-              new Date().getMinutes() +
-              ':' +
-              new Date().getSeconds(),
+            created_at: hour + ':' + minute + ':' + second,
           },
         ])
         typeText('msa')
@@ -743,12 +731,7 @@ function App() {
         ...dataTerminal,
         {
           html: 'text',
-          created_at:
-            new Date().getHours() +
-            ':' +
-            new Date().getMinutes() +
-            ':' +
-            new Date().getSeconds(),
+          created_at: hour + ':' + minute + ':' + second,
         },
       ])
       typeText('not found')
@@ -757,12 +740,7 @@ function App() {
         ...dataTerminal,
         {
           html: 'text',
-          created_at:
-            new Date().getHours() +
-            ':' +
-            new Date().getMinutes() +
-            ':' +
-            new Date().getSeconds(),
+          created_at: hour + ':' + minute + ':' + second,
         },
       ])
     }
@@ -772,7 +750,7 @@ function App() {
       `typing_text${e ? e : dataTerminal.length - 1}`
     )
     const container_typing = document.getElementById('container_typing')
-    console.log(typing_text, 'initup')
+
     if (!typing_text) return
     if (container_typing) {
       typing_text.focus()
@@ -783,6 +761,7 @@ function App() {
     return
   }
   const HtmlTerminal = (props: IHTMLTerimnal) => {
+    console.log(props.item, dataTerminal, 'initer')
     if (!props) return 'wewe'
     if (props.item.html === 'input') {
       return (
@@ -800,7 +779,7 @@ function App() {
                     </span>
                   </div>
                 </div>
-                <div className="col-span-12 col-start-2">
+                <div className="col-span-12 md:col-start-2 col-start-4">
                   <div className="text-white ">
                     <div>
                       <div
