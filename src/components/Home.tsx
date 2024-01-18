@@ -354,6 +354,14 @@ function App() {
         line4 = ''
         line5 = ``
       }
+
+      if (e === 'text empty') {
+        line1 = '     '
+        line2 = ''
+        line3 = ''
+        line4 = ''
+        line5 = ``
+      }
       const birtday = new Date('1996-12-22')
       const today = new Date()
 
@@ -385,7 +393,11 @@ function App() {
               'text-sm italic') ||
             '',
         })
-        typed.wait(1500)
+        if (e === 'text empty') {
+          typed.wait(2)
+        } else {
+          typed.wait(1500)
+        }
         if (container_typing)
           container_typing.scrollTo({
             left: 0,
@@ -497,6 +509,7 @@ function App() {
           typed.wait(1000)
         }
       }
+
       await typed.run()
       // console.log(
       //   typing_text,
@@ -537,9 +550,10 @@ function App() {
 
     const charCode = e.keyCode || e.which
     if (!typing_text) return
-    if (charCode === 13 || e.key === 'Enter') {
+    if (charCode === 13 || e.key == 'Enter' || e.code == 'Enter') {
       typing_text.blur()
       typing_text.setAttribute('contentEditable', 'false')
+      console.log(value, 'inierwe')
       if (!value) {
         setDataTerminal([
           ...dataTerminal,
@@ -553,6 +567,7 @@ function App() {
               new Date().getSeconds(),
           },
         ])
+        typeText('text empty')
         return
       }
 
@@ -722,6 +737,7 @@ function App() {
         typeText('msa')
         return
       }
+
       // if (el.current) el.current.innerHTML = "command not found";
       setDataTerminal([
         ...dataTerminal,
@@ -736,13 +752,35 @@ function App() {
         },
       ])
       typeText('not found')
+    } else {
+      setDataTerminal([
+        ...dataTerminal,
+        {
+          html: 'text',
+          created_at:
+            new Date().getHours() +
+            ':' +
+            new Date().getMinutes() +
+            ':' +
+            new Date().getSeconds(),
+        },
+      ])
     }
   }
-  function handleMouseEvent() {
-    const typing_text = document.getElementById('typing_text')
+  function handleMouseEvent(e?: number) {
+    const typing_text = document.getElementById(
+      `typing_text${e ? e : dataTerminal.length - 1}`
+    )
+    const container_typing = document.getElementById('container_typing')
+    console.log(typing_text, 'initup')
+    if (!typing_text) return
+    if (container_typing) {
+      typing_text.focus()
+    }
     if (typing_text) {
       typing_text.focus()
     }
+    return
   }
   const HtmlTerminal = (props: IHTMLTerimnal) => {
     if (!props) return 'wewe'
@@ -750,22 +788,34 @@ function App() {
       return (
         <>
           <div>
-            <div className="flex">
-              <span
-                className="text-white text-sm flex items-center fontTerminal"
-                style={{ width: '100px' }}
-              >
-                {props.item.created_at} =&#62; $
-              </span>
-              <div className="text-white  w-screen ">
-                <div>
-                  <div
-                    id={'typing_text' + props.index}
-                    contentEditable
-                    className="no-underline text-white focus:outline-none fontTerminal"
-                    onKeyDown={(event) => handleSubmit(event, props)}
-                    onMouseDown={handleMouseEvent}
-                  ></div>
+            <div>
+              <div className="grid grid-cols-12 grid-rows-1 gap-2">
+                <div className="col-span-2">
+                  {' '}
+                  <span
+                    className="text-white text-sm flex items-center fontTerminal"
+                    style={{ width: '100px' }}
+                  >
+                    {props.item.created_at} =&#62;
+                  </span>
+                </div>
+                <div className="col-start-3">
+                  {' '}
+                  <div className="text-white">$</div>
+                </div>
+                <div className="col-span-9 col-start-4">
+                  {' '}
+                  <div className="text-white ">
+                    <div>
+                      <div
+                        id={'typing_text' + props.index}
+                        contentEditable
+                        className="no-underline text-white focus:outline-none fontTerminal"
+                        onKeyDown={(event) => handleSubmit(event, props)}
+                        onMouseDown={() => handleMouseEvent(props.index)}
+                      ></div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -790,7 +840,9 @@ function App() {
 
   return (
     <>
-      <div>
+      <div className="md:p-20 p-5">
+        <h1 className="md:text-5xl text-2xl font-extrabold">Muh Syahendra A</h1>
+        <hr className=" h-1 mx-auto my-4 bg-gray-100 border-0 rounded md:my-5 dark:bg-gray-700" />
         <div className="bg-blue-900 h-12 flex justify-end p-2 items-center">
           <div className="w-20 flex justify-between">
             <div className="bg-red-100 h-5 w-5 rounded-xl button_terminal"></div>
@@ -799,8 +851,9 @@ function App() {
           </div>
         </div>
         <div
-          className="bg-black h-96 p-2 items-center h-9/6 overflow-auto py-3"
+          className="bg-black h-96 p-2 items-center h-9/6 overflow-auto py-3 rounded-bl-2xl rounded-br-2xl"
           id="container_typing"
+          onClick={() => handleMouseEvent()}
         >
           {dataTerminal.map((item, index) => (
             <div key={index}>{HtmlTerminal({ item, index })}</div>
