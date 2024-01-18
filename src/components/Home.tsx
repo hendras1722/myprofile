@@ -790,21 +790,17 @@ function App() {
           <div>
             <div>
               <div className="grid grid-cols-12 grid-rows-1 gap-2">
-                <div className="col-span-2">
-                  {' '}
-                  <span
-                    className="text-white text-sm flex items-center fontTerminal"
-                    style={{ width: '100px' }}
-                  >
-                    {props.item.created_at} =&#62;
-                  </span>
+                <div className="col-span-1">
+                  <div>
+                    <span
+                      className="text-white text-sm flex items-center fontTerminal"
+                      style={{ width: '100px' }}
+                    >
+                      {props.item.created_at} =&#62; $
+                    </span>
+                  </div>
                 </div>
-                <div className="col-start-3">
-                  {' '}
-                  <div className="text-white">$</div>
-                </div>
-                <div className="col-span-9 col-start-4">
-                  {' '}
+                <div className="col-span-12 col-start-2">
                   <div className="text-white ">
                     <div>
                       <div
