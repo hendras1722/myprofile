@@ -22,7 +22,7 @@
   font-weight: bold;
 }
 .bg-container {
-  background-image: url("/bg-testimonial.svg");
+  background-image: url('/bg-testimonial.svg');
   min-height: 100vh;
   background-repeat: no-repeat;
   background-size: cover;
@@ -40,33 +40,34 @@
   transition: 1s ease;
 }
 
-
-.NewText{
+.NewText {
   border: none;
   background-color: transparent;
   width: 300px;
 }
-.NewText:focus{
+.NewText:focus {
   outline: none;
 }
 
-.fontTerminal{
+.fontTerminal {
   font-family: 'VT323';
 }
 
-.button_terminal:nth-child(1){
-  background-color: #EF4444;
+.button_terminal:nth-child(1) {
+  background-color: #ef4444;
   border: 2px solid #1e3458;
 }
 
-.button_terminal:nth-child(2){
-  background-color: #F59E0B;
+.button_terminal:nth-child(2) {
+  background-color: #f59e0b;
   border: 2px solid #1e3458;
-
 }
 
-.button_terminal:nth-child(3){
-  background-color: #11B981;
+.button_terminal:nth-child(3) {
+  background-color: #11b981;
   border: 2px solid #1e3458;
+}
 
+.process {
+  transition: border 0.3s ease-in-out;
 }
