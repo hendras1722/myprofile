@@ -14,13 +14,16 @@ import {
 } from '@chakra-ui/react'
 import ItsMe from '../assets/me.jpeg'
 import { Github } from '../modules/github.ts'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import {
   NextImage,
   ReactImage,
   VueImage,
   NuxtImage,
 } from '../assets/importImage.ts'
+import Ceisa from '../assets/ceisa.png'
+import CimbCCPL from '../assets/cimbccpl.png'
+import DashboardCimbCCPL from '../assets/dashboardccpl.png'
 // import CVPdf from "../assets/CV_Muh Syahendra A.pdf";
 
 function Me() {
@@ -343,121 +346,119 @@ function Me() {
                     desc="Hi, I'm Muh Syahendra Anindyantoro usually called hendra. I work as a Frontend Developer or Frontend Engineer. My daily life as a Frontend Developer is always in front of a laptop. Covering the design into HTML and integrating the required endpoints."
                   />
                 </div>
-                <div className="mt-5 px-4  ">
-                  <Divider marginTop={5} />
-                  <div className="mt-5 font-bold text-lg mb-5">
-                    Contact Person
-                  </div>
-                  <Box
-                    padding={3}
-                    shadow={'md'}
-                    borderWidth={'1px'}
-                    borderRadius={10}
-                    marginTop={3}
-                    background={'white'}
-                  >
-                    <div className="d-block">
-                      <div className="flex items-center">
-                        <div className="w-full">
-                          <hr className="border-t-2 border-black radius rounded-2xl" />
-                        </div>
-                        <div>
-                          {' '}
-                          <span className="bg-blue-500 px-2 w-2 text-white rounded-full mx-3">
-                            Address
-                          </span>
-                        </div>
-                        <div className="w-full">
-                          <hr className="border-t-2 border-black radius rounded-2xl" />
-                        </div>
-                      </div>
-                      <div className="text-sm font-medium rounded border-2 p-1 my-1">
-                        Jl Beo 1 Perum Barito 1 blok A5 Rt 2/X Gonilan Kartasura
-                      </div>
-                    </div>
-                    <div className="d-block">
-                      <div className="flex items-center">
-                        <div className="w-full">
-                          <hr className="border-t-2 border-black radius rounded-2xl" />
-                        </div>
-                        <div>
-                          <span className="bg-blue-500 px-2 w-2 text-white rounded-full mx-3">
-                            Email
-                          </span>{' '}
-                        </div>
-                        <div className="w-full">
-                          <hr className="border-t-2 border-black radius rounded-2xl" />
-                        </div>
-                      </div>
-                      <div className="text-sm font-medium rounded border-2 p-1 my-1">
-                        <a href="mailto:muhsyahendraa1722@gmail.com">
-                          muhsyahendraa1722@gmail.com
-                        </a>{' '}
-                      </div>
-                    </div>
-
-                    <div className="d-block">
-                      <div className="flex items-center">
-                        <div className="w-full">
-                          <hr className="border-t-2 border-black radius rounded-2xl" />
-                        </div>
-                        <div>
-                          <span className="bg-blue-500 px-2 w-2 text-white rounded-full mx-3">
-                            CV
-                          </span>{' '}
-                        </div>
-                        <div className="w-full">
-                          <hr className="border-t-2 border-black radius rounded-2xl" />
-                        </div>
-                      </div>
-                      <div className="text-sm font-medium rounded border-2 p-1 my-1">
-                        <div className="text-sm font-medium">
-                          <a href="">Download</a>{' '}
-                        </div>
-                      </div>
-                    </div>
-                  </Box>
-                </div>
-                <div className="mt-3">
-                  <span className="mt-3">
-                    <div className="flex lg:justify-start justify-center md:justify-center mt-5 ">
-                      <div className="md:mr-5 mr-3">
-                        <div>
-                          <button
-                            onClick={() => handleClick('github')}
-                            className="bg-transparent hover:bg-black text-black font-semibold hover:text-white py-2 px-4 border border-black hover:border-transparent rounded"
-                          >
-                            Github
-                          </button>
-                        </div>
-                      </div>
-                      <div className="md:mr-5 mr-3">
-                        <div>
-                          <button
-                            onClick={() => handleClick('linkedin')}
-                            className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
-                          >
-                            Linkedin
-                          </button>
-                        </div>
-                      </div>
-                      <div className="md:mr-5">
-                        <div>
-                          <button
-                            onClick={() => handleClick('whatsapp')}
-                            className="bg-transparent hover:bg-green-500 text-green-500 font-semibold hover:text-white py-2 px-4 border border-green-500 hover:border-transparent rounded"
-                          >
-                            Whatsapp
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  </span>
-                </div>
               </Box>
             </div>
           </HStack>
-          <div className="px-4">
+          <div className="mt-5 px-4  ">
+            <Divider marginTop={5} />
+            <div className="mt-5 font-bold text-lg mb-5">Contact Person</div>
+            <Box
+              padding={3}
+              shadow={'md'}
+              borderWidth={'1px'}
+              borderRadius={10}
+              marginTop={3}
+              background={'white'}
+            >
+              <div className="d-block">
+                <div className="flex items-center">
+                  <div className="w-full">
+                    <hr className="border-t-2 border-black radius rounded-2xl" />
+                  </div>
+                  <div>
+                    {' '}
+                    <span className="bg-blue-500 px-2 w-2 text-white rounded-full mx-3">
+                      Address
+                    </span>
+                  </div>
+                  <div className="w-full">
+                    <hr className="border-t-2 border-black radius rounded-2xl" />
+                  </div>
+                </div>
+                <div className="text-sm font-medium rounded border-2 p-1 my-1">
+                  Jl Beo 1 Perum Barito 1 blok A5 Rt 2/X Gonilan Kartasura
+                </div>
+              </div>
+              <div className="d-block">
+                <div className="flex items-center">
+                  <div className="w-full">
+                    <hr className="border-t-2 border-black radius rounded-2xl" />
+                  </div>
+                  <div>
+                    <span className="bg-blue-500 px-2 w-2 text-white rounded-full mx-3">
+                      Email
+                    </span>{' '}
+                  </div>
+                  <div className="w-full">
+                    <hr className="border-t-2 border-black radius rounded-2xl" />
+                  </div>
+                </div>
+                <div className="text-sm font-medium rounded border-2 p-1 my-1">
+                  <a href="mailto:muhsyahendraa1722@gmail.com">
+                    muhsyahendraa1722@gmail.com
+                  </a>{' '}
+                </div>
+              </div>
+
+              <div className="d-block">
+                <div className="flex items-center">
+                  <div className="w-full">
+                    <hr className="border-t-2 border-black radius rounded-2xl" />
+                  </div>
+                  <div>
+                    <span className="bg-blue-500 px-2 w-2 text-white rounded-full mx-3">
+                      CV
+                    </span>{' '}
+                  </div>
+                  <div className="w-full">
+                    <hr className="border-t-2 border-black radius rounded-2xl" />
+                  </div>
+                </div>
+                <div className="text-sm font-medium rounded border-2 p-1 my-1">
+                  <div className="text-sm font-medium">
+                    <a href="">Download</a>{' '}
+                  </div>
+                </div>
+              </div>
+            </Box>
+          </div>
+          <div className="mt-3 flex justify-center">
+            <span className="mt-3">
+              <div className="flex lg:justify-start justify-center md:justify-center mt-5 ">
+                <div className="md:mr-5 mr-3">
+                  <div>
+                    <button
+                      onClick={() => handleClick('github')}
+                      className="bg-transparent hover:bg-black text-black font-semibold hover:text-white py-2 px-4 border border-black hover:border-transparent rounded"
+                    >
+                      Github
+                    </button>
+                  </div>
+                </div>
+                <div className="md:mr-5 mr-3">
+                  <div>
+                    <button
+                      onClick={() => handleClick('linkedin')}
+                      className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
+                    >
+                      Linkedin
+                    </button>
+                  </div>
+                </div>
+                <div className="md:mr-5">
+                  <div>
+                    <button
+                      onClick={() => handleClick('whatsapp')}
+                      className="bg-transparent hover:bg-green-500 text-green-500 font-semibold hover:text-white py-2 px-4 border border-green-500 hover:border-transparent rounded"
+                    >
+                      Whatsapp
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </span>
+          </div>
+          <div className="px-4 mt-5">
             <div className="md:mr-5 flex items-center justify-center mb-3  ">
               <div className="w-full">
                 {(stateGithub.length > 0 || open) && (
@@ -756,25 +757,51 @@ function Me() {
                   borderRadius={10}
                   marginTop={3}
                   background={'white'}
-                  height={450}
+                  height={'auto'}
                 >
-                  <div className="flex justify-around py-32">
-                    <div>
-                      <img src={ReactImage} alt="React" className="logoTech" />
-                      <div className="text-center mt-4">React JS</div>
-                    </div>
-                    <div>
-                      <img src={VueImage} alt="Vue" className="logoTech" />
-                      <div className="text-center mt-4">Vue JS</div>
-                    </div>
-                    <div>
-                      <img src={NextImage} alt="Next" className="logoTech" />
-                      <div className="text-center mt-4">Next JS</div>
-                    </div>
-                    <div>
-                      <img src={NuxtImage} alt="Nuxt" className="logoTech" />
-                      <div className="text-center mt-4">Nuxt JS</div>
-                    </div>
+                  <div className="rb-container">
+                    <ul className="rb">
+                      <li className="rb-item">
+                        <h2 className="text-4xl font-bold">Ronda Indonesia</h2>
+                        <p className="mb-5">Nuxt 3</p>
+                        <p className="sm:flex sm:justify-around">
+                          <img src={CimbCCPL} alt="ccpl" width={150} />
+                          <img
+                            src={DashboardCimbCCPL}
+                            className="w-auto md:h-56 md:mt-0 mt-5"
+                            alt="Dashboard Ceisa"
+                          />
+                        </p>
+                      </li>
+                      <li className="rb-item">
+                        <h2 className="text-4xl font-bold">Cimb Online form</h2>
+                        <p className="mb-5">Nuxt JS</p>
+                        <p className="sm:flex sm:justify-around">
+                          <img src={CimbCCPL} alt="ccpl" width={150} />
+                          <img
+                            src={DashboardCimbCCPL}
+                            className="w-auto md:h-56 md:mt-0 mt-5"
+                            alt="Dashboard Ceisa"
+                          />
+                        </p>
+                      </li>
+                      <li className="rb-item">
+                        <h2 className="text-4xl font-bold">Ceisa 4.0</h2>
+                        <p className="mb-5">React JS</p>
+                        <p>
+                          <img src={Ceisa} alt="Ceisa" />
+                        </p>
+                      </li>
+                      <li className="rb-item">
+                        <h2 className="text-4xl font-bold">
+                          Alat Monitoring Suhu di Panel Gardu Induk
+                        </h2>
+                        <p>
+                          Alat monitoring suhu untuk panel gardu induk wonogiri.
+                        </p>
+                        <p>Jun 2019 - Jun 2019</p>
+                      </li>
+                    </ul>
                   </div>
                 </Box>
               </div>
