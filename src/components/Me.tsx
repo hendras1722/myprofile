@@ -32,7 +32,6 @@ function Me() {
   const [stateWhatsapp, setStateWhatsapp] = useState<string>('')
   const [open, setOpen] = useState<boolean>(false)
   const [linkPreview, setLinkPreview] = useState<string>('')
-  const [loading, setLoading] = useState<boolean>(false)
 
   const { isOpen, onOpen, onClose } = useDisclosure()
 
@@ -295,23 +294,6 @@ function Me() {
                   __html: `<iframe id="idIframe" src="${linkPreview}" title="Preview" style="width: 100%; height: 570px; display: block;"></iframe>`,
                 }}
               ></div>
-              {loading && (
-                <div
-                  className="d-flex justify-center align-center"
-                  style={{ height: '100vh' }}
-                >
-                  <div className="lds-roller">
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                  </div>
-                </div>
-              )}
             </div>
           </ModalBody>
         </ModalContent>
