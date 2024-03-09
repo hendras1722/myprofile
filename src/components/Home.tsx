@@ -9,8 +9,6 @@ import {
   ModalBody,
   Alert,
   AlertIcon,
-  AlertTitle,
-  AlertDescription,
 } from '@chakra-ui/react'
 import DuarrGif from '../assets/duarr.gif'
 import IconPrivy from '../assets/privy.svg'
