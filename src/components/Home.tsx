@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, Fragment } from 'react'
 import { Typed } from 'typed.ts'
 import { useNavigate } from 'react-router-dom'
 import {
@@ -7,6 +7,10 @@ import {
   Modal,
   ModalContent,
   ModalBody,
+  Alert,
+  AlertIcon,
+  AlertTitle,
+  AlertDescription,
 } from '@chakra-ui/react'
 import DuarrGif from '../assets/duarr.gif'
 import IconPrivy from '../assets/privy.svg'
@@ -810,13 +814,20 @@ function App() {
   }
 
   return (
-    <>
+    <Fragment>
       <div className="md:p-20 p-5">
         <div className="mb-8">
           <h1 className="md:text-5xl text-2xl font-extrabold">
             Muh Syahendra A
           </h1>
         </div>
+        <Alert status="warning" className="mb-5 rounded">
+          <AlertIcon />
+          This website is no longer under development and will redirect to this{' '}
+          <span className="ml-3 text-blue-500 font-bold">
+            <a href="htts://msame.vercel.app">link</a>
+          </span>
+        </Alert>
         <article>
           <p>
             Hi, I am Muhammad Syahendra Anindyantoro. The Man Behind The
@@ -951,7 +962,7 @@ function App() {
           </>
         )}
       </div>
-    </>
+    </Fragment>
   )
 }
 

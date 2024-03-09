@@ -21,10 +21,8 @@ import {
   VueImage,
   NuxtImage,
 } from '../assets/importImage.ts'
-import Ceisa from '../assets/ceisa.png'
-import CimbCCPL from '../assets/cimbccpl.png'
-import DashboardCimbCCPL from '../assets/dashboardccpl.png'
-// import CVPdf from "../assets/CV_Muh Syahendra A.pdf";
+import Makyur from '../assets/makyur.svg'
+import WebMe from '../assets/me.svg'
 
 function Me() {
   const [stateGithub, setStateGithub] = useState<Github[]>([])
@@ -398,7 +396,9 @@ function Me() {
                 </div>
                 <div className="text-sm font-medium rounded border-2 p-1 my-1">
                   <div className="text-sm font-medium">
-                    <a href="">Download</a>{' '}
+                    <a href="/CV_MuhSyahendraA.pdf" target="_blank">
+                      Download
+                    </a>{' '}
                   </div>
                 </div>
               </div>
@@ -746,42 +746,22 @@ function Me() {
                       <li className="rb-item">
                         <h2 className="text-4xl font-bold">Ronda Indonesia</h2>
                         <p className="mb-5">Nuxt 3</p>
-                        <p className="sm:flex sm:justify-around">
-                          <img src={CimbCCPL} alt="ccpl" width={150} />
-                          <img
-                            src={DashboardCimbCCPL}
-                            className="w-auto md:h-56 md:mt-0 mt-5"
-                            alt="Dashboard Ceisa"
-                          />
-                        </p>
-                      </li>
-                      <li className="rb-item">
-                        <h2 className="text-4xl font-bold">Cimb Online form</h2>
-                        <p className="mb-5">Nuxt JS</p>
-                        <p className="sm:flex sm:justify-around">
-                          <img src={CimbCCPL} alt="ccpl" width={150} />
-                          <img
-                            src={DashboardCimbCCPL}
-                            className="w-auto md:h-56 md:mt-0 mt-5"
-                            alt="Dashboard Ceisa"
-                          />
-                        </p>
-                      </li>
-                      <li className="rb-item">
-                        <h2 className="text-4xl font-bold">Ceisa 4.0</h2>
-                        <p className="mb-5">React JS</p>
-                        <p>
-                          <img src={Ceisa} alt="Ceisa" />
-                        </p>
                       </li>
                       <li className="rb-item">
                         <h2 className="text-4xl font-bold">
-                          Alat Monitoring Suhu di Panel Gardu Induk
+                          Makyur &#40; Makan Sayur &#41;
                         </h2>
-                        <p>
-                          Alat monitoring suhu untuk panel gardu induk wonogiri.
+                        <p className="mb-5">Desain Figma</p>
+                        <p className="sm:flex sm:justify-around">
+                          <img src={Makyur} alt="Makyur" width={550} />
                         </p>
-                        <p>Jun 2019 - Jun 2019</p>
+                      </li>
+                      <li className="rb-item">
+                        <h2 className="text-4xl font-bold">My Website New</h2>
+                        <p className="mb-5">Nuxt</p>
+                        <p className="sm:flex sm:justify-around">
+                          <img src={WebMe} alt="Makyur" width={550} />
+                        </p>
                       </li>
                     </ul>
                   </div>
