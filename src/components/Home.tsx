@@ -825,7 +825,7 @@ function App() {
           <AlertIcon />
           This website is no longer under development and will redirect to this{' '}
           <span className="ml-3 text-blue-500 font-bold">
-            <a href="htts://msame.vercel.app">link</a>
+            <a href="https://msame.vercel.app">link</a>
           </span>
         </Alert>
         <article>
